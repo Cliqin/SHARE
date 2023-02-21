@@ -10,3 +10,5 @@ str1="何建辉大帅哥"(谢谢你)
 for i in str1:
 
 ​	print(i)(何建辉大帅哥)
+
+cout<<"jy师兄好帅！"
