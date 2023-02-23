@@ -10,3 +10,5 @@
 cout<<"jy师兄好帅！"
 
 cout<<"xhh好帅"<<endl;
+
+cout<<"hello world";
