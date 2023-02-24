@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/user/user",
+    "pages/user/feedback/feedback",
+    "pages/user/setting/setting",
+    "pages/user/setting/password/password"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "AiWorks",
+    "navigationBarTextStyle": "white"
+  }
+}
