@@ -17,10 +17,28 @@
   </view>
 
   <view class="tags">
-    <text>实践过</text>
-    <text>选话题</text>
-    <text>在哪里</text>
-    <text>计入记录本</text>
+    <view class="tags-item">
+      <text class="iconfont icon-icon-test"></text>
+      <text>实践过</text>
+      <text class="iconfont icon-icon-test4 nav"></text>
+    </view>
+
+    <view class="tags-item">
+      <text class="iconfont icon-icon-test3"></text>
+      <text>选话题</text>
+      <text class="iconfont icon-icon-test4 nav"></text>
+    </view>  
+    <view class="tags-item">
+      <text class="iconfont icon-icon-test1"></text> 
+      <text>在哪里</text>
+      <text class="iconfont icon-icon-test4 nav"></text>
+    </view>
+    <view class="tags-item">
+      <text class="iconfont icon-icon-test2"></text>
+      <text>记录本</text>
+      <text class="iconfont icon-icon-test4 nav"></text>
+    </view>
+  
   </view>
 
   <view class="content">
@@ -28,8 +46,5 @@
           <button class="btn" formType='submit' open-type="getUserInfo">发布帖子</button>
       </view>
   </view>
-
-  
-
   
 </view>

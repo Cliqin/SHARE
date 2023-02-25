@@ -1,5 +1,6 @@
 .post-container{
   margin: 30rpx 20rpx 0rpx;
+  height: 100%;
 }
 
 .photos-container{
@@ -22,11 +23,12 @@
 .text-xl{
   background-color:white;
   margin: 5rpx 5rpx;
+  height: 400rpx;
 }
 
 .text-bold{
   width: 710rpx;
-  height: 60rpx;
+  height: 80rpx;
   font-weight: bolder;
   color: black;
   align-content: center;
@@ -56,20 +58,46 @@
 }
 
 .tags{
-  display: flex;
-  flex-direction: column;
   border-top: whitesmoke solid 20rpx;
   padding-top: 10rpx;
-
 }
 
-.tags text{
-  font-size: 40rpx;
-  margin-bottom: 10rpx;
+.tags-item{
+  display: flex;
+  height: 100rpx;
+}
+
+.tags-item text{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-right: 25rpx;
+}
+
+.nav{
+  /* display: inline-flex;
+  align-items: center; */
+  margin: auto auto;
+}  
+
+.content{
+  margin-top: 70rpx;
+  bottom: 0;
 }
 
 .btn{
+  width: 400rpx;
+  border-radius: 50rpx;
+  background-color:rgb(44, 184, 118);
   display: flex;
   justify-content: center;
-  margin-top: 20rpx;
 }
+
+
+
+
+ 
+ 
+ 
+ 
+ 
