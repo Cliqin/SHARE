@@ -74,6 +74,10 @@
   margin-right: 25rpx;
 }
 
+.tags-item .iconfont{
+  font-size: 50rpx;
+}
+
 .nav{
   /* display: inline-flex;
   align-items: center; */

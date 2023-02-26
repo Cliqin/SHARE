@@ -19,6 +19,7 @@
   <view class="tags">
     <view class="tags-item">
       <text class="iconfont icon-icon-test"></text>
+      
       <text>实践过</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
