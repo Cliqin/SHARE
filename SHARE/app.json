@@ -10,8 +10,10 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "经验分享",
     "navigationBarTextStyle": "black",
+
     "backgroundColor": "#efefef",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
   },
   "tabBar": {
     "color": "#dddddd",
