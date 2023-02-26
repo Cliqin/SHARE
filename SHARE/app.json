@@ -6,10 +6,12 @@
     "pages/post/post"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ffff",
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "经验分享",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#efefef",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#dddddd",
