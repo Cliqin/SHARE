@@ -75,6 +75,11 @@
         <button class="btn" formType='submit' open-type="getUserInfo">发布帖子</button>
       </view>
     </view>
+
+<button class="btn" type="default" bindtap="handleChooseLocation">
+    chooseLocation
+</button>
+
   </form>
 
 </view>
