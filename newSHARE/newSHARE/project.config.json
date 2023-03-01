@@ -9,23 +9,19 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "coverView": false,
-    "enhance": false,
-    "showShadowRootInWxmlPanel": false,
-    "packNpmRelationList": [],
-    "ignoreUploadUnusedFiles": true
+    }
   },
   "compileType": "miniprogram",
-  "condition": {},
-  "editorSetting": {
-    "tabIndent": "insertSpaces",
-    "tabSize": 2
-  },
   "libVersion": "2.30.2",
+  "appid": "wx4de5f7986ac489a5",
+  "projectname": "%E5%8D%8E%E4%BA%91%E6%99%BA%E6%85%A7%E5%9B%AD%E5%8C%BA",
+  "condition": {},
   "packOptions": {
     "ignore": [],
     "include": []
   },
-  "appid": "wx4de5f7986ac489a5"
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
 }
