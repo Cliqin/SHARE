@@ -1,4 +1,3 @@
-
 <view class="post-container">
 
   <view class="photos-container">
@@ -34,83 +33,19 @@
       <text class="iconfont icon-icon-test1"></text> 
       <text>在哪里</text>
       <text class="iconfont icon-icon-test4 nav"></text>
+    </view>
+    <view class="tags-item">
+      <text class="iconfont icon-icon-test2"></text>
+      <text>记录本</text>
+      <text class="iconfont icon-icon-test4 nav"></text>
+    </view>
+  
+  </view>
 
-    </view>
-    <view class="post-submit-container" >
-        
-        <!-- <button class="post-submit"  hover-class="button-hover" size="default" type="default" style="color:#fff;background-color:rgba(23,181,238,1)">
-            发表
-        </button> -->
-    </view>
-</view>
-<!-- <view class="post-icon-container" >
-    <view class="post-icon-emoj-wrap" >
-        <view class="post-icon-emoj"> </view>
-        <text class="post-icon-desc" >表情</text>
-    </view>
-    <view class="post-icon-emoj-wrap" >
-        <view class="post-icon-img"></view>
-        <text class="post-icon-desc" >图片</text>
-    </view>
-    <view class="post-icon-emoj-wrap" >
-        <view class="post-icon-voice"></view>
-        <text class="post-icon-desc" >语音</text>
-    </view>
-    <view class="post-icon-emoj-wrap" >
-        <view class="post-icon-vedio" ></view>
-        <text class="post-icon-desc" >视频</text>
-    </view>
-    <view class="post-icon-emoj-wrap" >
-        <view class="post-icon-reward"></view>
-        <text class="post-icon-desc" >悬赏</text>
-    </view>
-</view> -->
-
-<view class="post-type-container" >
-    <text class="post-type-wrap" >每日分享</text>
-    <text class="post-type-wrap" >日常交流</text>
-    <text class="post-type-wrap" >考公经验</text>
-    <text class="post-type-wrap" >操作指南</text>
-    <text class="post-type-wrap" >考研经验</text>
-    <text class="post-type-wrap" >奇闻趣事</text>
-    <!-- <text class="post-type-wrap" >更新进度</text>
-    <text class="post-type-wrap" >公众号运营</text> -->
-</view>
-<view class="content">
-  <form bindsubmit="formSubmit">
-    <!-- <view class="text-content">
-      <view class='text-area'>
-        <textarea name="input-content" type="text" placeholder="畅所欲言" placeholder-class="holder" value="{{textContent}}" bindblur='getTextAreaContent' class="input-content"></textarea>
-      </view>
-    </view> -->
-    <!-- <scroll-view class="image-group" scroll-x="true">
-      <block wx:for='{{images}}' wx:for-index='idx'>
-      <view>
-        <image src='{{images[idx]}}' mode='aspectFill' bindtap="previewImg"></image>
-        <icon type='clear' bindtap='removeImg'  data-index="{{idx}}" ></icon>
-      </view>
-      </block>
-      
-    </scroll-view> -->
-    <view class="post-position-wrap" >
-            <image class="post-position-icon"  mode="scaleToFill" src="http://qty83k.creatby.com/materials/origin/0024e9b38e605192d94951ce3dffe8ae_origin.png" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://qty83k.creatby.com/materials/origin/0024e9b38e605192d94951ce3dffe8ae_origin.png); "/>
-            <text class="post-position-text" >点击发送位置</text>
-        </view>
-    <view class='btn-func'>
-    
-      <view class="picimgview">
-        <image src='../../images/publish/pic2.png' bindtap='chooseImage' class="picimg"></image>
-      </view>
-      
+  <view class="content">
       <view class="picbtnview">
-        <button class="btn" formType='submit' open-type="getUserInfo">发布帖子</button>
+          <button class="btn" formType='submit' open-type="getUserInfo">发布帖子</button>
       </view>
-    </view>
-
-<button class="btn" type="default" bindtap="handleChooseLocation">
-    chooseLocation
-</button>
-
-  </form>
-
+  </view>
+  
 </view>

@@ -1,10 +1,4 @@
 {
-  
-"permission": {
-  "scope.userLocation": {
-    "desc": "为了给您提供更好的服务，请授权您的地理位置信息"
-  }
-},
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
@@ -12,10 +6,14 @@
     "pages/post/post"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ffff",
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "经验分享",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+
+    "backgroundColor": "#efefef",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
   },
   "tabBar": {
     "color": "#dddddd",
