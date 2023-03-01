@@ -18,14 +18,14 @@
 
   <view class="tags">
     <view class="tags-item">
-      <text class="iconfont icon-icon-test"></text>
+      <text class="iconfont icon-icon-test48"></text>
       
       <text>实践过</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
 
     <view class="tags-item">
-      <text class="iconfont icon-icon-test3"></text>
+      <text class="iconfont icon-icon-test26"></text>
       <text>选话题</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>  
