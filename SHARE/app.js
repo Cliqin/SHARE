@@ -1,108 +1,23 @@
-//app.js
+// app.js
 App({
   onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    this.getTypes();
-    this.login();
-  },
-  login:function() {
-    var that = this;
-      wx.login({
-        success: function(res){
-          console.log(res);
-          wx.getUserInfo({
-            success: function(res){
-              
-            }
-          })
-        }
-      })
-  },
-
-
-  decode:function(encryptedData, signature, iv) {
-      encryptedData = atob(encryptedData);
-      signature = atob(signature);
-      console.log(encryptedData);
-      console.log(signature);
-  },
-  getUserInfo:function(cb){
-    var that = this
-    if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
-      //调用登录接口
-      wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              console.log(res);
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
-        }
-      })
+    if (!wx.cloud) {
+      console.error('请使用 2.2.3 或以上的基础库以使用云能力');
+    } else {
+      wx.cloud.init({
+        // env 参数说明：
+        //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
+        //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
+        env:'cloud1-0ge9f60oda907654',
+        //   如不填则使用默认环境（第一个创建的环境）
+        // env: 'my-env-id',
+        traceUser: true,
+        
+      });
+   
+        
     }
-  },
-  getTypes: function() {
-      var that = this;
-      var types =  [{
-          ArticleTypeID : 0,
-          ArticleTypeName : "全部"
-        },{
-          ArticleTypeID : 3132,
-          ArticleTypeName : "经验交流"
-        },{
-          ArticleTypeID : 875,
-          ArticleTypeName : "改进建议"
-        },{
-          ArticleTypeID : 2038,
-          ArticleTypeName : "常见问题"
-        },{
-          ArticleTypeID : 2033,
-          ArticleTypeName : "奇闻趣事"
-        },{
-          ArticleTypeID : 1,
-          ArticleTypeName : "操作指南"
-        }];
-      that.globalData.types = types;
-  },
-  getMoreArticle: function(pn, typeId, h, hongbao, rspan, cb) {
-    wx.request({
-      url: 'http://vzan.com/f/getarticlebottom-1?pageIndex=1&typeId=2038&h=0&hongbao=&from=qq&rspan=1',
-      data: {
-        pageIndex:pn,
-        typeId:typeId,
-        h:h,
-        hongbao:"",
-        from:"qq",
-        rspan:rspan
-      },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        "Content-Type":"application/json;charset=utf-8"
-      }, // 设置请求的 header
-      success: function(res){
-        console.log("request success");
-        if (typeof cb == "function") {
-          cb(res);
-        }
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
-  },
-  globalData:{
-    userInfo:null,
-    types:[],
-    voice:{}
-  },
-  setGlobalData: function(data) {
-    this.globalData = data;
+
+    this.globalData = {};
   }
-})
+});

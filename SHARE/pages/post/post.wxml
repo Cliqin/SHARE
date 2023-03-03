@@ -43,7 +43,7 @@
   </view>
 
   <view class="content">
-      <view class="picbtnview">
+      <view bindtap="submit" class="picbtnview">
           <button class="btn" formType='submit' open-type="getUserInfo">发布帖子</button>
       </view>
   </view>

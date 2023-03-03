@@ -11,6 +11,16 @@ Page({
   onReady:function(){
     // 页面渲染完成
   },
+
+  submit(){
+    wx.cloud.database().collection('set').get()
+    .then(res =>{
+      console.log(res)
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+  },
   onShow:function(){
     // 页面显示
   },
