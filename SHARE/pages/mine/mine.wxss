@@ -1,1 +1,58 @@
 /* pages/mine/mine.wxss */
+.mine-user{
+  display:flex;
+}
+.user .userinfo-phote{
+  flex: 1;
+  display: inline-block;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 80rpx;
+}
+.userinfo-nickname{
+  margin-left: 21rpx;
+  margin-top: 40rpx;
+}
+.edit{
+  margin-left: 21rpx;
+}
+.mine{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+.mine-button{
+  display: flex;
+  width:33%;
+  height: 70rpx;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  background-color:gray;
+  color:salmon;
+  margin-top: 50rpx;
+}
+.my{
+  border-top:30rpx;
+  padding-top: 10rpx;
+}
+.my-item{
+  background-color: seashell;
+  display: flex;
+  height: 120rpx;
+  margin-top: 10rpx;
+  border-top: 1rpx solid #efefef;
+  border-bottom: 1rpx solid #efefef;
+}
+.my-item text{
+  display: flex;
+  font-size:41rpx;
+  text-align: center;
+  align-items: center;
+  margin-right: 21rpx;
+
+}
+
+.nav{
+  margin: auto auto;
+}
