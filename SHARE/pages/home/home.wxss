@@ -117,8 +117,7 @@ page {
 
 .userinfo-avatar {
   overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
+  width: 100rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
