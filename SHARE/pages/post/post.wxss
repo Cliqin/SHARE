@@ -4,16 +4,36 @@
 }
 
 .photos-container{
-  display: flex;
-  margin: auto auto;
+  height: 310rpx;
+  white-space: nowrap;
 }
+
+.image_item{
+  display: inline-block;
+  /* display: inline-block; */
+  position: relative;
+
+}
+
+.icon_remove{
+  color: brown;
+  position: absolute;
+  float: right;
+  font-size:50rpx;
+  right:15rpx;
+  
+}
+
 .addphotos{
-  width: 150rpx;
-  height: 150rpx;
+  width: 300rpx;
+  height: 300rpx;
   background-color:whitesmoke;
   margin-bottom: 5rpx;
-  border-radius: 40rpx;
+  margin-right: 10rpx;
+  border-radius: 30rpx;
+  
 }
+
 
 .input-container{
   display: flex;
@@ -82,7 +102,7 @@
   /* display: inline-flex;
   align-items: center; */
   margin: auto auto;
-}  
+}
 
 .content{
   margin-top: 70rpx;
@@ -100,8 +120,8 @@
 
 
 
- 
- 
- 
- 
- 
+
+
+
+
+

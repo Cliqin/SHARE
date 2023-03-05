@@ -26,6 +26,13 @@
   color: #fff;
 }
 
+.toPost{
+  background-color: burlywood;
+  color: #17b5ee;
+  float: right;
+  font-size: xx-large;
+}
+
 page {
   -ms-overflow-style: none;
 }

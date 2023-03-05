@@ -1,8 +1,14 @@
 <view class="post-container">
 
-  <view class="photos-container">
-    <image class="addphotos" src="/images/img32x32.png" mode="scaleToFill"/>
-  </view>
+  <!-- 图片 -->
+  <scroll-view scroll-x enable-flex class="photos-container">
+    
+    <view wx:if="{{imgList.length!=0}}" wx:for="{{imgList}}" wx:key="index" class="image_item">
+      <image class="addphotos" bindtap = "viewImage"  src="{{item}}" data-url = "{{item}}" mode=""/>
+      <text bindtap="deleteImage" data-index="{{index}}" class="icon_remove iconfont icon-icon-test48"></text>
+    </view>
+    <image wx:if="{{imgList.length!=9}}" bindtap = "chooseImage" class="addphotos" src="/images/img32x32.png" mode=""/>
+  </scroll-view>
 
   <view class="input-container">
     <input bindinput="" value="" class="text-xl text-bold" maxlength="30" placeholder="标题" placeholder-style="color:gery"></input>
