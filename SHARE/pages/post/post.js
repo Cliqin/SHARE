@@ -1,5 +1,6 @@
 
 // var app = getApp();
+ let input_title=''
  let content=''
 Page({  
  
@@ -98,10 +99,14 @@ Page({
     content=event.detail.value
    // console.log(content)
   },
+  sendtitle(event){
+    input_title=event.detail.value
+  },
    sendcomment(){
     const db=wx.cloud.database()
     db.collection("share").add({
       data:{
+        input_title,
         content,
       }
     })

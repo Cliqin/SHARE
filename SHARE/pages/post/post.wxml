@@ -11,7 +11,7 @@
   </scroll-view>
 
   <view class="input-container">
-    <input bindinput="" value="" class="text-xl text-bold" maxlength="30" placeholder="标题" placeholder-style="color:gery"></input>
+    <input bindinput="sendtitle" value="" class="text-xl text-bold" maxlength="30" placeholder="标题" placeholder-style="color:gery"></input>
     <textarea bindinput="oninput" value="" class="text-xl" style="width: 100%;" maxlength="2000" placeholder="正文内容" cursor-spacing="50" placeholder-style="color:gery"></textarea>
   </view>
 
