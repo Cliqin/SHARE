@@ -1,8 +1,10 @@
 
 // var app = getApp();
-
-Page({
+ let content=''
+Page({  
+ 
   data:{
+  
     imgList:[]
   },
   onLoad:function(options){
@@ -90,5 +92,27 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
-  }
+  },
+  oninput(event){
+
+    content=event.detail.value
+   // console.log(content)
+  },
+   sendcomment(){
+    const db=wx.cloud.database()
+    db.collection("share").add({
+      data:{
+        content,
+      }
+    })
+    .then((res)=>{
+      wx.hideLoading()
+      wx.showToast({
+        title: '发布成功',
+      })
+    })
+   }
+  
+
+
 })

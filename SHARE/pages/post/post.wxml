@@ -12,7 +12,7 @@
 
   <view class="input-container">
     <input bindinput="" value="" class="text-xl text-bold" maxlength="30" placeholder="标题" placeholder-style="color:gery"></input>
-    <textarea bindinput="" value="" class="text-xl" style="width: 100%;" maxlength="2000" placeholder="正文内容" cursor-spacing="50" placeholder-style="color:gery"></textarea>
+    <textarea bindinput="oninput" value="" class="text-xl" style="width: 100%;" maxlength="2000" placeholder="正文内容" cursor-spacing="50" placeholder-style="color:gery"></textarea>
   </view>
 
   <view class="post-type-container" >
@@ -50,7 +50,7 @@
 
   <view class="content">
       <view bindtap="submit" class="picbtnview">
-          <button class="btn" formType='submit' open-type="getUserInfo">发布帖子</button>
+          <button class="btn" formType='submit' open-type="getUserInfo" bindtap="sendcomment">发布帖子</button>
       </view>
   </view>
   
