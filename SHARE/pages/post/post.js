@@ -5,8 +5,10 @@
 Page({  
  
   data:{
+
   
-    imgList:[]
+    imgList:[],
+    icon: [{ name: 'dianhua', isShow: true }, { name: 'icon', isShow: true }, { name: 'loading2', isShow: true }, { name: 'btn', isShow: true }]
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数

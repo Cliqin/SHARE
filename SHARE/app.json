@@ -8,6 +8,9 @@
     "pages/mine/mine",
     "pages/post/post"
   ],
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
   "window": {
     "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#ffffff",

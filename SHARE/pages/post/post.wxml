@@ -1,42 +1,46 @@
-<view class="post-container">
-
-  <!-- 图片 -->
-  <scroll-view scroll-x enable-flex class="photos-container">
-    
-    <view wx:if="{{imgList.length!=0}}" wx:for="{{imgList}}" wx:key="index" class="image_item">
-      <image class="addphotos" bindtap = "viewImage"  src="{{item}}" data-url = "{{item}}" mode=""/>
-      <text bindtap="deleteImage" data-index="{{index}}" class="icon_remove iconfont icon-icon-test48"></text>
+<view class="post-container bg-gray ">
+  <view class="cu-bar bg-white ">
+    <view class="action ">图片上传</view>
+    <view class="action">{{imgList.length}}/9</view>
+  </view>
+  <view class="cu-form-group ">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="viewImage" data-url="{{imgList[index]}}">
+        <image src='{{imgList[index]}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="deleteImage" data-index="{{index}}">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="chooseImage" wx:if="{{imgList.length<9}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view>
     </view>
-    <image wx:if="{{imgList.length!=9}}" bindtap = "chooseImage" class="addphotos" src="/images/img32x32.png" mode=""/>
-  </scroll-view>
-
-  <view class="input-container">
-    <input bindinput="sendtitle" value="" class="text-xl text-bold" maxlength="30" placeholder="标题" placeholder-style="color:gery"></input>
-    <textarea bindinput="oninput" value="" class="text-xl" style="width: 100%;" maxlength="2000" placeholder="正文内容" cursor-spacing="50" placeholder-style="color:gery"></textarea>
   </view>
-
-  <view class="post-type-container" >
-      <text>正文里插入</text>
-      <button class="post-type-wrap" >每日分享</button>
-      <button class="post-type-wrap" >日常交流</button>
-      <button class="post-type-wrap" >考公经验</button>
+  <view class="cu-form-group ">
+    <textarea maxlength="2000" style="height: 30rpx;" disabled="{{modalName!=null}}" bindinput="sendtitle" placeholder="标题"></textarea>
   </view>
-
-  <view class="tags">
+  <view class="cu-form-group ">
+    <textarea maxlength="2000" style="height: 300rpx;" disabled="{{modalName!=null}}" bindinput="oninput" placeholder="正文"></textarea>
+  </view>
+  <!-- <view class="post-type-container">
+    <text>正文里插入</text>
+    <button class="post-type-wrap">每日分享</button>
+    <button class="post-type-wrap">日常交流</button>
+    <button class="post-type-wrap">考公经验</button>
+  </view> -->
+  <view class="tags ">
     <view class="tags-item">
       <text class="iconfont icon-icon-test48"></text>
-      
       <text>实践过</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
-
     <view class="tags-item">
       <text class="iconfont icon-icon-test26"></text>
       <text>选话题</text>
       <text class="iconfont icon-icon-test4 nav"></text>
-    </view>  
+    </view>
     <view class="tags-item">
-      <text class="iconfont icon-icon-test1"></text> 
+      <text class="iconfont icon-icon-test1 "></text>
       <text>在哪里</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
@@ -45,13 +49,10 @@
       <text>记录本</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
-  
   </view>
-
-  <view class="content">
-      <view bindtap="submit" class="picbtnview">
-          <button class="btn" formType='submit' open-type="getUserInfo" bindtap="sendcomment">发布帖子</button>
-      </view>
+  <view class="cu-bar btn-group">
+    <button class="cu-btn bg-green shadow-blur round lg" formType='submit' open-type="getUserInfo" bindtap="sendcomment">
+      保存
+    </button>
   </view>
-  
 </view>
