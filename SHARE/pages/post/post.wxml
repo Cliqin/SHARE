@@ -20,7 +20,7 @@
     <textarea maxlength="2000" style="height: 30rpx;" disabled="{{modalName!=null}}" bindinput="sendtitle" placeholder="标题"></textarea>
   </view>
   <view class="cu-form-group ">
-    <textarea maxlength="2000" style="height: 300rpx;" disabled="{{modalName!=null}}" bindinput="oninput" placeholder="正文"></textarea>
+    <textarea maxlength="2000" style="height: 300rpx;" disabled="{{modalName!=null}}" bindinput="sendcontent" placeholder="正文"></textarea>
   </view>
   <!-- <view class="post-type-container">
     <text>正文里插入</text>
@@ -51,7 +51,7 @@
     </view>
   </view>
   <view class="cu-bar btn-group">
-    <button class="cu-btn bg-green shadow-blur round lg" formType='submit' open-type="getUserInfo" bindtap="sendcomment">
+    <button class="cu-btn bg-green shadow-blur round lg" open-type="getUserInfo" bindtap="submit">
       保存
     </button>
   </view>

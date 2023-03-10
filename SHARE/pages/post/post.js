@@ -1,42 +1,24 @@
-
 // var app = getApp();
- let input_title=''
- let content=''
-Page({  
- 
-  data:{
 
-  
-    imgList:[],
-    icon: [{ name: 'dianhua', isShow: true }, { name: 'icon', isShow: true }, { name: 'loading2', isShow: true }, { name: 'btn', isShow: true }]
+Page({
+
+  data: {
+    title: '',
+    content: '',
+    imgList: [],
   },
-  onLoad:function(options){
+  onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
   },
-  onReady:function(){
+  onReady: function () {
     // 页面渲染完成
   },
-
-  submit(){
-    wx.cloud.database().collection('set').get()
-    .then(res =>{
-      console.log(res)
-    })
-    .catch(err =>{
-      console.log(err)
-    })
-  },
-
   viewImage(e) {
     console.log(e)
     wx.previewImage({
       urls: this.data.imgList,
       current: e.currentTarget.dataset.url
-      // urls: ['https://storage.360buyimg.com/channel2022/jd_home/0.0.2/assets/sprite/header/sprite.png'],
-      // current: 'https://storage.360buyimg.com/channel2022/jd_home/0.0.2/assets/sprite/header/sprite.png'
     });
-    // https://storage.360buyimg.com/channel2022/jd_home/0.0.2/assets/sprite/header/sprite.png
-    // console.log(e.currentTarget.dataset.url.tempFilePath)
   },
 
   chooseImage() {
@@ -49,7 +31,7 @@ Page({
         var imgList = []
         for (let i = 0; i < res.tempFiles.length; i++) {
           imgList.push(res.tempFiles[i].tempFilePath)
-          
+
         }
         var imgList = this.data.imgList.concat(imgList)
 
@@ -87,39 +69,56 @@ Page({
     })
   },
 
-  onShow:function(){
+  onShow: function () {
     // 页面显示
   },
-  onHide:function(){
+  onHide: function () {
     // 页面隐藏
   },
-  onUnload:function(){
+  onUnload: function () {
     // 页面关闭
   },
-  oninput(event){
+  sendcontent(event) {
+    this.setData({
+      content: event.detail.value
+    })
+  },
+  sendtitle(event) {
+    this.setData({
+      title: event.detail.value
+    })
+  },
+  submit() {
 
-    content=event.detail.value
-   // console.log(content)
-  },
-  sendtitle(event){
-    input_title=event.detail.value
-  },
-   sendcomment(){
-    const db=wx.cloud.database()
-    db.collection("share").add({
-      data:{
-        input_title,
-        content,
-      }
-    })
-    .then((res)=>{
-      wx.hideLoading()
+    if (this.data.title == '' || this.data.content == '') {
       wx.showToast({
-        title: '发布成功',
+        title: '都不能为空哦',
       })
-    })
-   }
-  
+
+    } else {
+      const db = wx.cloud.database()
+      db.collection("share").add({
+          data: {
+            title: this.data.title,
+            content: this.data.content,
+          }
+        })
+        .then((res) => {
+          wx.hideLoading()
+          wx.showToast({
+            title: '发布成功',
+          })
+          this.setData({
+            title: '',
+            content: '',
+          })
+        })
+    }
+
+  }
+
+
+
 
 
 })
