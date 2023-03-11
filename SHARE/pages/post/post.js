@@ -1,4 +1,4 @@
-// var app = getApp();
+ var app = getApp();
 
 Page({
 
@@ -89,36 +89,37 @@ Page({
     })
   },
   submit() {
+    
+    // if (this.data.title == '' || this.data.content == '') {
+    //   wx.showToast({
+    //     title: '都不能为空哦',
+    //   })
 
-    if (this.data.title == '' || this.data.content == '') {
-      wx.showToast({
-        title: '都不能为空哦',
-      })
-
-    } else {
+    // } else {
       const db = wx.cloud.database()
       db.collection("share").add({
           data: {
+            nickName:app.globalData.userInfo.nickName,
+            faceImg:app.globalData.userInfo.avatarUrl,
             title: this.data.title,
             content: this.data.content,
-          }
-        })
-        .then((res) => {
+            images:this.data.imgList,
+            time:Date.now()
+          },
+        success(res){
+          console.log(res)
           wx.hideLoading()
-          wx.showToast({
+          wx.navigateBack({
+          
+            success(res) {
+            wx.showToast({ 
             title: '发布成功',
           })
-          this.setData({
-            title: '',
-            content: '',
+        }
           })
+          
+          }
         })
     }
-
-  }
-
-
-
-
 
 })

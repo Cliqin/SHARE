@@ -9,6 +9,7 @@
         <image src='{{imgList[index]}}' mode='aspectFill'></image>
         <view class="cu-tag bg-red" catchtap="deleteImage" data-index="{{index}}">
           <text class="cuIcon-close"></text>
+          
         </view>
       </view>
       <view class="solids" bindtap="chooseImage" wx:if="{{imgList.length<9}}">

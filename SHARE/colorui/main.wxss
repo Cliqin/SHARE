@@ -1715,7 +1715,7 @@ button.icon.lg {
 
 .cu-bar.fixed,
 .nav.fixed {
-	position: fixed;
+	position: relative;
 	width: 100%;
 	top: 0;
 	z-index: 1024;

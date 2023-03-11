@@ -27,14 +27,44 @@ Page({
     })
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数
+    
   },
 
   toPost() {
+    if(app.globalData.userInfo == null) 
+    {
+     
+      wx.navigateTo({
+        url:'/pages/home/home'
+      }),
+       wx.showToast({
+        title: '请先登录',
+      })
+    }
+    else {
     wx.navigateTo({
       url: "/pages/post/post"
     })
   }
+  },
+
+  getActionList (){
+    var that =this
+    wx.cloud.database().collection('share').get({
+      success(res){
+        console.log(res)
+        that.setData ({
+      actionList:res.data
+    })
+      }
+    })
+  
+  },
+  onPullDownRefresh() 
+{
+  this.getActionList()
+}
 })
+

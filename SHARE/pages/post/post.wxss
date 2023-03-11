@@ -84,7 +84,7 @@
 
 .tags-item{
   display: flex;
-  height: 100rpx;
+  height: 100rpx; 
 }
 
 .tags-item text{
@@ -92,6 +92,7 @@
   text-align: center;
   align-items: center;
   margin-right: 25rpx;
+  
 }
 
 .tags-item .iconfont{

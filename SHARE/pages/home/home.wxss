@@ -127,6 +127,6 @@ page {
   flex-direction: column;
   height: 200rpx;
   align-items: center;
-  color: rgb(248, 33, 33);
+  color: rgb(179, 235, 25);
 
 }
