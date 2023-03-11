@@ -1,6 +1,8 @@
+const app = getApp()
+
 Page({
   data: {
-    userInfo:{},
+    userInfo: {},
     imgUrls: [
       '/images/lunbo3.png',
     ],
@@ -23,7 +25,7 @@ Page({
     console.log('999' + this.data.token);
     var that = this;
     this.setData({
-      btnSize: 0.8 * 0.32 * this.data.windowHeight,
+      btnSize: 0.9 * 0.32 * this.data.windowHeight,
     })
     const token = wx.getStorageSync('token')
     if (token == '') {
@@ -43,16 +45,20 @@ Page({
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
+        console.log(e)
+        console.log(res)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        app.globalData.userInfo=res.userInfo
+        console.log(app.globalData.userInfo,'44')
       }
     })
   },
   onShow() {
-    
-    
+
+
   },
   onHide: function () {
     this.setData({
@@ -91,9 +97,9 @@ Page({
   },
   toGroup() {
     wx.navigateTo({
-        url: '/pages/index/index',
-      })
-    
+      url: '/pages/index/index',
+    })
+
   },
   toPark() {
     wx.navigateTo({
