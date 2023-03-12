@@ -12,6 +12,8 @@ Page({
     pageIndex: 1,
     pageSize: 2,
     audioIcon: "",
+
+    default_img: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
     css: {
       "bankuaiSelected": ""
     },
@@ -27,44 +29,57 @@ Page({
     })
   },
   onLoad: function () {
-    var that = this
-    //调用应用实例的方法获取全局数
     
+    //调用应用实例的方法获取全局数
+
+  },
+  onShow:function(){
+    var that = this
+    this.getActionList()
+  },
+  //查看图片
+  viewImage(e) {
+    console.log(e)
+    wx.previewImage({
+      urls: e.currentTarget.dataset.image_list,
+      current: e.currentTarget.dataset.image_list[0]
+    })
   },
 
   toPost() {
-    if(app.globalData.userInfo == null) 
-    {
-     
+    if (app.globalData.userInfo == null) {
+
       wx.navigateTo({
-        url:'/pages/home/home'
+        url: '/pages/home/home'
       }),
-       wx.showToast({
-        title: '请先登录',
-      })
+        wx.showToast({
+          title: '请先登录',
+        })
     }
     else {
-    wx.navigateTo({
-      url: "/pages/post/post"
-    })
-  }
+      wx.navigateTo({
+        url: "/pages/post/post"
+      })
+    }
   },
 
-  getActionList (){
-    var that =this
+  getActionList() {
+    var that = this
     wx.cloud.database().collection('share').get({
-      success(res){
+      success(res) {
         console.log(res)
-        that.setData ({
-      actionList:res.data
-    })
+        wx.stopPullDownRefresh()
+        that.setData({
+          actionList: res.data
+        })
+        
       }
     })
-  
+
   },
-  onPullDownRefresh() 
-{
-  this.getActionList()
-}
+  
+  onPullDownRefresh() {
+    this.getActionList() 
+  }
 })
 

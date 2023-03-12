@@ -1,18 +1,18 @@
 <view class="post-container bg-gray ">
   <view class="cu-bar bg-white ">
     <view class="action ">图片上传</view>
-    <view class="action">{{imgList.length}}/9</view>
+    <view class="action">{{temp_imgList.length}}/9</view>
   </view>
   <view class="cu-form-group ">
     <view class="grid col-4 grid-square flex-sub">
-      <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="viewImage" data-url="{{imgList[index]}}">
-        <image src='{{imgList[index]}}' mode='aspectFill'></image>
+      <view class="bg-img" wx:for="{{temp_imgList}}" wx:key="{{index}}" bindtap="viewImage" data-url="{{temp_imgList[index]}}">
+        <image src='{{temp_imgList[index]}}' mode='aspectFill'></image>
         <view class="cu-tag bg-red" catchtap="deleteImage" data-index="{{index}}">
           <text class="cuIcon-close"></text>
           
         </view>
       </view>
-      <view class="solids" bindtap="chooseImage" wx:if="{{imgList.length<9}}">
+      <view class="solids" bindtap="chooseImage" wx:if="{{temp_imgList.length<9}}">
         <text class="cuIcon-cameraadd"></text>
       </view>
     </view>
@@ -23,12 +23,7 @@
   <view class="cu-form-group ">
     <textarea maxlength="2000" style="height: 300rpx;" disabled="{{modalName!=null}}" bindinput="sendcontent" placeholder="正文"></textarea>
   </view>
-  <!-- <view class="post-type-container">
-    <text>正文里插入</text>
-    <button class="post-type-wrap">每日分享</button>
-    <button class="post-type-wrap">日常交流</button>
-    <button class="post-type-wrap">考公经验</button>
-  </view> -->
+  
   <view class="tags ">
     <view class="tags-item">
       <text class="iconfont icon-icon-test48"></text>
@@ -52,7 +47,7 @@
     </view>
   </view>
   <view class="cu-bar btn-group">
-    <button class="cu-btn bg-green shadow-blur round lg" open-type="getUserInfo" bindtap="submit">
+    <button class="cu-btn bg-green shadow-blur round lg" open-type="getUserInfo" bindtap="Submit">
       保存
     </button>
   </view>
