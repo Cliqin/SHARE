@@ -12,7 +12,7 @@
     </block>
     </view> -->
 <view class="mine-container">
-<view  class="mine-user">
+<view class="mine-user">
   <view class="user">
     <image class="userinfo-phote" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
   </view>
