@@ -1,7 +1,7 @@
 <import src='../common/foot.wxml' />
 <!-- 轮播图 -->
 <swiper circular='true' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='width: {{windowWidth}}px;height: {{0.4*windowHeight}}px;'>
-  <block wx:for="{{imgUrls}}">
+  <block wx:for="{{imgUrls}}" wx:key="index">
     <swiper-item>
       <image src="{{item}}" class="slide-image" style="width: {{windowWidth}}px;height: {{0.4*windowHeight}}px" />
     </swiper-item>
@@ -17,7 +17,7 @@
 
   <view class='board-content'>
     <swiper circular='true' autoplay="{{autoplay}}" interval="{{interval2}}" duration="{{duration2}}" style='height: 9vh;line-height:9vh;'>
-      <block wx:for="{{list}}" wx:for-index="i" wx:for-item="item">
+      <block wx:for="{{list}}" wx:key="index" wx:for-index="i" wx:for-item="item">
         <swiper-item>
           <text bindtap='test{{i}}'>{{item}}</text>
         </swiper-item>
@@ -54,18 +54,13 @@
 </view>
 
 
-<view class='button-center' style='top: -{{0.25*windowHeight+0.5*btnSize}}px;height: {{btnSize}}px; width: {{btnSize}}px' bindtap="toUser">
-  <view class='button-center-two' style='height: {{0.9*btnSize}}px;width: {{0.9*btnSize}}px;background-color: #488f2c; border-radius: 50%;margin: auto auto;position:relative;  display: flex;flex-direction: column;justify-content: center;align-items: center;'>
-    <view class='button-center-three' style='height: {{0.8*btnSize}}px;width: {{0.8*btnSize}}px;background-color: rgb(170, 64, 165); border-radius: 50%;margin: auto auto;position:relative;  display: flex;flex-direction: column;justify-content: center;align-items: center;' bindtap="getInfo">
-      <view class='button-center-inner' style='height: {{0.7*btnSize}}px;width: {{0.7*btnSize}}px;'>
-        <block wx:if="{{actionList!=null}}">
-         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image> 
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text> 
-        </block>
-        <block wx:else>
-        <image src='/images/我的32x32.png' class='index-logo'></image>
-        <text>我的</text></block>
-      </view>
-    </view>
+<view class='button-center' style='top: -{{0.25*windowHeight+0.5*btnSize}}px;height: {{btnSize}}px; width: {{btnSize}}px'>
+  <view class='button-center-inner' style='height: {{0.5*btnSize}}px;width: {{0.5*btnSize}}px;'>
+    <block wx:if="{{!hasUserInfo}}">
+      <text wx:if="{{canIUseGetUserProfile}}" class="iconfont icon-icon-test40 loginAvator" mode="cover" bindtap="getUserProfile"></text>
+    </block>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" bindtap="toUser"></image>
+    </block>
   </view>
 </view>

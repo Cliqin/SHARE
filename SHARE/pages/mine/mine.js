@@ -1,13 +1,15 @@
+
+const app = getApp()
 Page({
   data: {
-    userInfo: {},
+    userInfo:app.globalData.userInfo,
     hasUserInfo: false,
     canIUseGetUserProfile: false,
   },
   onLoad() {
     if (wx.getUserProfile) {
       this.setData({
-        canIUseGetUserProfile: true
+        userInfo: app.globalData.userInfo,  
       })
     }
   },

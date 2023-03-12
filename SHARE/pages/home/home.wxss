@@ -64,7 +64,8 @@ page {
   align-items: center;
 }
 .button-center{
-  background-color: #e92121;
+  width: 300rpx;
+  height: 300rpx;
   position: relative;
   border-radius: 50%;
   display: flex;
@@ -72,9 +73,9 @@ page {
   margin: 0 auto;
 }
 .button-center-inner {
-  width: 80%;
-  height: 80%;
-  background-color: #0748c0;
+  width: 50%;
+  height: 50%;
+  background-color: #e5ebe8;
   border-radius: 50%;
   margin: auto auto;
   display: flex;
@@ -117,9 +118,12 @@ page {
 
 .userinfo-avatar {
   overflow: hidden;
-  width: 100rpx;
-  margin: 20rpx;
+  width: 100%;
   border-radius: 50%;
+}
+
+.loginAvator{
+  font-size: 170rpx;
 }
 
 .userinfo {
