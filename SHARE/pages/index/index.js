@@ -29,13 +29,26 @@ Page({
     })
   },
   onLoad: function () {
-    
+    console.log('加载')
+    var that = this
+    const db = wx.cloud.database()
+    db.collection('share').orderBy('time','desc')
+    .get()
+    .then((res)=>{
+      console.log(res)
+      that.setData({
+          actionList: res.data
+        })
+        wx.stopPullDownRefresh()
+    })
+    .catch(console.error)
+    // this.getActionList()
+
     //调用应用实例的方法获取全局数
 
   },
   onShow:function(){
-    var that = this
-    this.getActionList()
+    
   },
   //查看图片
   viewImage(e) {
@@ -63,23 +76,25 @@ Page({
     }
   },
 
-  getActionList() {
-    var that = this
-    wx.cloud.database().collection('share').get({
-      success(res) {
-        console.log(res)
-        wx.stopPullDownRefresh()
-        that.setData({
-          actionList: res.data
-        })
+  // getActionList() {
+  //   var that = this
+  //   wx.cloud.database().collection('share').orderBy('time','desc')
+  //   .get({   
+  //     success(res) {
+  //       console.log(res)
+  //       wx.stopPullDownRefresh()
+  //       that.setData({
+  //         actionList: res.data
+  //       })
         
-      }
-    })
+  //     }
+  //   })
 
-  },
+  // },
   
   onPullDownRefresh() {
-    this.getActionList() 
+    // this.getActionList() 
+    this.onLoad()
   }
 })
 

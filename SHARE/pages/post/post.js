@@ -131,6 +131,7 @@ Page({
         that.setData({
           cloud_imgList: result
         }),
+        
           //提交数据库
           db.collection("share").add({
             data: {
@@ -140,7 +141,7 @@ Page({
               title: that.data.title,
               content: that.data.content,
               images: that.data.cloud_imgList,
-              time: Date.now()
+              time: db.serverDate()
             },
             success(res) {
               console.log(res)
@@ -155,6 +156,7 @@ Page({
       })
     }
   },
+  
 
   // 异步上传单个文件
   uploadFile: function (index, filePath) {
