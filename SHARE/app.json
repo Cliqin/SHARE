@@ -1,26 +1,24 @@
 {
   "cloud": true,
-  "pages": [  
+  "pages": [
     "pages/home/home",
     "pages/mine/mine",
-  "pages/post/post",
+    "pages/post/post",
     "pages/index/index",
-    "pages/logs/logs"
-
+    "pages/logs/logs",
+    "pages/detail/detail"
   ],
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
   },
   "window": {
-    "backgroundTextStyle":"dark",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "经验分享",
     "navigationBarTextStyle": "black",
-
     "backgroundColor": "#efefef",
     "enablePullDownRefresh": true,
     "onReachBottomDistance": 50
   },
-  
   "sitemapLocation": "sitemap.json"
 }

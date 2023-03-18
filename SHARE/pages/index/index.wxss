@@ -437,10 +437,11 @@ justify-content: space-between;
 font-family: "Microsoft YaHei",Arial; 
 padding-left: 160rpx;
 padding-right: 160rpx;
-background-color: rgb(252, 245, 245);
+background-color: #fff;
 
 }
 .hot {
+  font-weight: 550;
   width: 150rpx;
   height: 50rpx;
   text-align: center;
@@ -448,12 +449,19 @@ background-color: rgb(252, 245, 245);
   font-size: 30rpx;
 }
 .recomend {
+  font-weight: 550;
+
   width: 150rpx;
   height: 50rpx;
   text-align: center;
   line-height: 50rpx;
   font-size: 30rpx;
 
+}
+
+.red {
+  color:rgb(223, 61, 50);
+  background-color: #fff;
 }
 .publish {
   display: flex;
@@ -467,3 +475,15 @@ background-color: rgb(252, 245, 245);
 .publish .iconfont {
   font-size:80rpx;
 }
+
+.idanddelete {
+  display: flex;
+  flex-direction: row;
+}
+.dle-btn {
+  margin-left: 10rpx;
+}
+.show
+{display:block}
+
+.hidden{display:none}

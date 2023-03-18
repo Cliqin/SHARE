@@ -12,6 +12,8 @@ Page({
     pageIndex: 1,
     pageSize: 2,
     audioIcon: "",
+    selected:true,
+    selected1:false,
 
     default_img: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
     css: {
@@ -22,6 +24,19 @@ Page({
     hot: 0,
     scrollLeft: 0
   },
+
+  selected:function(e){
+    this.setData({
+      selected1:false,
+      selected:true
+    })
+  },
+  selected1:function(e){
+    this.setData({
+      selected:false,
+      selected1:true
+    })
+  },
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
@@ -29,11 +44,17 @@ Page({
     })
   },
   onLoad: function () {
+    
     console.log('加载')
     var that = this
+    setTimeout(function(){
+console.log(app.globalData.openid)
+    that.setData ({
+      myOpenid:app.globalData.openid
+    })
+    })
     const db = wx.cloud.database()
-    db.collection('share').orderBy('time','desc')
-    .get()
+    db.collection('share').orderBy('time','desc').get()
     .then((res)=>{
       console.log(res)
       that.setData({
@@ -92,9 +113,40 @@ Page({
 
   // },
   
+todetail(event) {
+console.log(event.currentTarget.dataset.id)
+  wx.navigateTo({
+
+      url:'/pages/detail/detail?id='+ event.currentTarget.dataset.id,
+    }
+  )
+},
+
+deleteAction(event){
+
+  console.log(event.currentTarget.dataset.id)
+
+  var that = this;
+  wx.showModal({
+    title:'提示',
+    content:'确定要删除此帖吗？',
+    success(res){
+      if(res.confirm){
+  wx.cloud.database().collection('share').doc(event.currentTarget.dataset.id).remove({
+    success(res){
+      console.log(res)
+      wx.showToast({
+        title: '删除成功！',
+      })
+      that.onLoad()
+    }
+  })
+      }
+}
+  })
+},
   onPullDownRefresh() {
     // this.getActionList() 
     this.onLoad()
   }
 })
-

@@ -1,0 +1,163 @@
+.detail {
+	background-color: #fff;
+}
+.title-bar {
+    font-size: 30px;
+    font-weight: 550;
+    margin-left: 10px;
+}
+.message-bar {
+  display: flex;
+	flex-direction: row;
+	padding: 20rpx 20rpx 40rpx 20rpx;
+}
+.left {
+  margin-right:15rpx;
+}
+.face-img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 20rpx;
+}
+
+.right {
+	display: flex;
+	flex-direction: column;
+	margin-left: 10rpx;
+	font-size: 28rpx;
+
+}
+.nickname {
+	font-size: 34rpx;
+	margin-top: 6rpx;
+	margin-bottom: 26rpx;
+}
+.time {
+	color:gray;
+}
+.text {
+	background-color: rgb(255, 255, 255);
+	padding: 10rpx 30rpx 40rpx 30rpx;
+	font-size: 36rpx;
+  text-align: justify;
+  letter-spacing: 2rpx;
+}
+
+.iconfont.icon-icon-test59 {
+  color: rgb(238, 115, 135);
+	font-size: 60rpx;
+	margin-left:30rpx;
+	margin-right: 20rpx;
+}
+
+.iconfont.icon-icon-test7 {
+  color:rgb(192, 226, 43);
+	font-size: 60rpx;
+	margin-right: 20rpx;
+}
+
+.iconfont.icon-icon-test20 {
+  color: rgb(112, 121, 241);
+  font-size: 60rpx;
+	margin-right: 20rpx;
+  
+}
+
+.iconfont.icon-icon {
+  color: gray;
+	font-size: 60rpx;
+}
+.comment {
+  padding:10rpx;
+  margin-top: 30rpx;
+	background-color: #fff;
+	height: 100%
+}
+
+.user-comment {
+  margin-left:25rpx;
+ font-size: 30rpx;
+ padding-top: 10rpx;
+ padding-bottom: 20rpx;
+}
+
+.comment-user-bar {
+  display: flex;
+	flex-direction: row;
+  padding: 20rpx 20rpx 40rpx 20rpx;
+}
+
+.home-header-line {
+
+  background: #e0e3da;
+
+  width: 100%;
+
+  height: 2rpx;
+
+}
+
+.comment-content {
+  display: flex;
+  margin-top: 25rpx;
+  font-size: 34rpx;
+  letter-spacing: 2rpx;
+}
+.home-header-line1 {
+
+  background: #e0e3da;
+
+  width: 100%;
+
+  height: 2rpx;
+  
+  margin-top: 50rpx;
+}
+
+.reply {
+  display: flex;
+}
+.comment-reply {
+  color:rgb(127, 166, 218);
+  display: flex;
+  font-size: 26rpx;
+  margin-top:25rpx;
+  margin-left: -5rpx;
+ height: 40rpx;
+ width:155rpx;
+ text-align:center;
+ line-height: 40rpx;
+
+}
+
+.iconfont icon-icon-test4{
+  font-size:24rpx ;
+
+}
+
+/* 发布评论 */
+.pub-comment {
+  background-color: #F7F7F7;
+  padding: 20rpx 70rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+.pub-left {
+  background-color: #fff;
+  color: #7F7F7F;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+.pub-input {
+  padding: 10rpx 20rpx;
+  width: 500rpx;
+}
+.pub-button {
+  color: #7F7F7F;
+  border: solid 1rpx #7F7F7F;
+  border-radius: 10rpx;
+  padding: 10rpx 20rpx;
+}

@@ -36,7 +36,6 @@ Page({
 
         }
 
-
         var temp_imgList = this.data.temp_imgList.concat(temp_imgList)
 
         this.setData({

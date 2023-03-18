@@ -1,0 +1,73 @@
+<view class="detail">
+	
+<view class="title-bar"> 
+  {{actions.title}}
+</view >
+<view class="message-bar">
+<view class="left">
+  <image class="face-img" src="{{actions.faceImg}}"></image>
+</view>
+<view class="right">
+  <view class="nickname">{{actions.nickName}}</view>
+	<view class="time">
+	{{actions.time}}
+	</view>
+</view>
+</view>
+<view class="text">
+{{actions.content}}
+</view>
+	<view >
+		<text class="iconfont icon-icon-test59"></text>
+		<text class="iconfont icon-icon-test7"></text>
+		<text class="iconfont icon-icon-test20"></text>
+		<text class="iconfont icon-icon" bindtap="delete" wx:if="{{openid == actions._openid}}"></text>
+		
+	</view>
+</view>
+
+<view class="comment"> 
+<view class="user-comment">
+	<text >  1条评论</text>
+  </view>
+  <view class="container">
+<!-- 画分割线 -->
+<view class="home-header-line"></view>
+</view>
+
+  <view class="comment-user-bar">
+<view class="left">
+  <image class="face-img" src="/images/kaoyan.png"></image>
+</view>
+<view class="right">
+  <view class="nickname">dream_ye</view>
+  <view>
+    
+  </view>
+	<view class="time">
+		2023.3.14.19:18
+	</view>
+  <view class="comment-content"> 
+  感谢博主大大的分享，很受用，今年一研为定！
+  </view>
+  <view class="reply">
+    <button class="comment-reply">回复
+		<text class="iconfont icon-icon-test4"></text>
+    </button>
+  </view>
+  <view class="container">
+<!-- 画分割线 -->
+<view class="home-header-line1"></view>
+</view>
+</view>
+</view>
+
+</view>
+<view class="pub-comment">
+  <view class="pub-left">
+    <input class="pub-input" placeholder="{{plcaceHolder}}" bindinput="getInputValue" value="{{inputValue}}"></input>
+  </view>
+
+  <view class="pub-button" bindtap="publishComment">发送</view>
+</view>
+

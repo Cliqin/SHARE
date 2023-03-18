@@ -57,7 +57,7 @@
 <view class='button-center' style='top: -{{0.25*windowHeight+0.5*btnSize}}px;height: {{btnSize}}px; width: {{btnSize}}px'>
   <view class='button-center-inner' style='height: {{0.5*btnSize}}px;width: {{0.5*btnSize}}px;'>
     <block wx:if="{{!hasUserInfo}}">
-      <text wx:if="{{canIUseGetUserProfile}}" class="iconfont icon-icon-test40 loginAvator" mode="cover" bindtap="getUserProfile"></text>
+      <text class="iconfont icon-icon-test40 loginAvator" mode="cover" bindtap="getUserProfile"></text>
     </block>
     <block wx:else>
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" bindtap="toUser"></image>
