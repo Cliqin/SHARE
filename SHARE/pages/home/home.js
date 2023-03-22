@@ -8,7 +8,7 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
-    interval2: 11000,
+    interval2: 2000,
     duration: 1000,
     duration2: 2000,
     windowHeight: wx.getSystemInfoSync().windowHeight,

@@ -11,7 +11,7 @@
 <!-- 公告栏 -->
 <view class='board'>
   <view class='board-title'>
-    <text style='color: orange;font-weight: bold;'>AiWorks</text>
+    <text style='color: orange;font-weight: bold;'>经验传花</text>
     <view style='font-weight: bold;border-right: 1px solid lightgrey;padding-right: 5px;'>公告</view>
   </view>
 

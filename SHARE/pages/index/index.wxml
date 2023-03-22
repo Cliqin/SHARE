@@ -49,28 +49,29 @@
   </view>
 </view>
 <view class="{{selected?'show':'hidden'}}">
-<block wx:for="{{actionList}}" wx:key="index">
-  <view class="cu-card article {{isCard?'no-card':''}}">
-    <view class="cu-item shadow">
-      <view class="title">
-        <view class="text-cut" bindtap="todetail" data-id="{{item._id}}">{{item.title}}</view>
-      </view>
-      <view class="content">
-        <image bindtap="viewImage" data-image_list="{{item.ifImage?item.images:[default_img]}}" src="{{item.ifImage?item.images[0]:default_img}}" mode="aspectFill"></image>
-        <view class="desc">
-          <view class="text-content" bindtap="todetail"  data-id="{{item._id}}" >{{item.content}}</view>
-          <view class="idanddelete">
-            <view class="cu-tag bg-red light sm round">{{item.nickName}}</view>
-            <view >
-             <button class="cu-tag bg-red light sm round dle-btn" wx:if="{{myOpenid == item._openid}}" catchtap="deleteAction" data-id="{{item._id}}"> 删除</button>
+  <block wx:for="{{actionList}}" wx:key="index">
+    <view class="cu-card article {{isCard?'no-card':''}}">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut" bindtap="todetail" data-id="{{item._id}}">{{item.title}}</view>
+        </view>
+        <view class="content">
+          <image bindtap="viewImage" data-image_list="{{item.ifImage?item.images:[default_img]}}" src="{{item.ifImage?item.images[0]:default_img}}" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content" bindtap="todetail" data-id="{{item._id}}">{{item.content}}</view>
+            <view class="idanddelete">
+              <view class="cu-tag bg-red light sm round">{{item.nickName}}</view>
+              <view>
+                <button class="cu-tag bg-red light sm round dle-btn" wx:if="{{myOpenid == item._openid}}" catchtap="deleteAction" data-id="{{item._id}}"> 删除</button>
+              </view>
+              <!-- <view class="cu-tag bg-green light sm round">史诗</view> -->
             </view>
-            <!-- <view class="cu-tag bg-green light sm round">史诗</view> -->
           </view>
         </view>
       </view>
     </view>
-  </view>
-</block></view>
+  </block>
+</view>
 <!-- <view class="cu-card article {{isCard?'no-card':''}}">
   <view class="cu-item shadow">
     <view class="title">
@@ -88,24 +89,25 @@
     </view>
   </view>
 </view> -->
-<view class="{{selected1?'show':'hidden'}}"><view class="cu-card article {{isCard?'no-card':''}}">
-  <view class="cu-item shadow">
-    <view class="title">
-      <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
-    </view>
-    <view class="content">
-      <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
-      <view class="desc">
-        <view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
-        <view>
-          <view class="cu-tag bg-red light sm round">正义天使</view>
-          <view class="cu-tag bg-green light sm round">史诗</view>
+<!-- <view class="{{selected1?'show':'hidden'}}">
+  <view class="cu-card article {{isCard?'no-card':''}}">
+    <view class="cu-item shadow">
+      <view class="title">
+        <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+      </view>
+      <view class="content">
+        <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+        <view class="desc">
+          <view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+          <view>
+            <view class="cu-tag bg-red light sm round">正义天使</view>
+            <view class="cu-tag bg-green light sm round">史诗</view>
+          </view>
         </view>
       </view>
     </view>
   </view>
-</view></view>
+</view> -->
 <view class="publish" bindtap="toPost">
   <text class="iconfont icon-fabu"></text>
 </view>
-

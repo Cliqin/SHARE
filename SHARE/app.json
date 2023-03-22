@@ -14,7 +14,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "经验分享",
+    "navigationBarTitleText": "经验传花",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#efefef",
     "enablePullDownRefresh": true,
