@@ -81,7 +81,7 @@ console.log(app.globalData.openid)
   },
 
   toPost() {
-    if (app.globalData.userInfo == null) {
+    if (app.globalData.avatar == null) {
 
       wx.navigateTo({
         url: '/pages/home/home'

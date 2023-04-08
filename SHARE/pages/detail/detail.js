@@ -111,7 +111,7 @@ Page({
   publishComment() {
     var that = this;
 
-    if (app.globalData.userInfo == null) {
+    if (app.globalData.avatar == null) {
       wx.navigateTo({
         url: '/pages/home/home',
       })
@@ -122,8 +122,8 @@ Page({
         success(res) {
           var actions = res.data
           var comment = {}
-          comment.nickName = app.globalData.userInfo.nickName
-          comment.faceImg = app.globalData.userInfo.avatarUrl
+          comment.nickName = app.globalData.nickName
+          comment.faceImg = app.globalData.avatar
           comment.openid = app.globalData.openid
           comment.text = that.data.inputValue
           comment.time = Date.now()

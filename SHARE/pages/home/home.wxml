@@ -1,4 +1,3 @@
-<import src='../common/foot.wxml' />
 <!-- 轮播图 -->
 <swiper circular='true' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='width: {{windowWidth}}px;height: {{0.4*windowHeight}}px;'>
   <block wx:for="{{imgUrls}}" wx:key="index">
@@ -53,14 +52,14 @@
   </view>
 </view>
 
-
+<!-- 个人中心 -->
 <view class='button-center' style='top: -{{0.25*windowHeight+0.5*btnSize}}px;height: {{btnSize}}px; width: {{btnSize}}px'>
   <view class='button-center-inner' style='height: {{0.5*btnSize}}px;width: {{0.5*btnSize}}px;'>
-    <block wx:if="{{!hasUserInfo}}">
-      <text class="iconfont icon-icon-test40 loginAvator" mode="cover" bindtap="getUserProfile"></text>
+    <block wx:if="{{!hasAvatar}}">
+      <text class="iconfont icon-icon-test40 loginAvatar" mode="cover" bindtap="toUser"></text>
     </block>
     <block wx:else>
-      <image class="userinfo-avatar" src="{{avator}}" mode="cover" bindtap="toUser"></image>
+      <image class="userinfo-avatar" src="{{avatar}}" mode="cover" bindtap="toUser"></image>
     </block>
   </view>
 </view>

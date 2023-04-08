@@ -14,10 +14,10 @@
 <view class="mine-container">
   <view class="mine-user">
       <view class="user">
-        <image class="userinfo-phote" src="{{avator}}" background-size="cover" bindtap="ToMy" data-op="Profile"></image>
+        <image class="userinfo-phote" src="{{avatar}}" background-size="cover" bindtap="ToMy" data-op="Profile"></image>
       </view>
       <view class="userinfo-name">
-        <view class="userinfo-nickname">{{nickName?nickName:"未设置名称"}}</view>
+        <view class="userinfo-nickname">{{nickname?nickname:"未设置名称"}}</view>
         <view class="edit"bindtap="ToMy" data-op="Profile">查看或编辑个人主页</view>
       </view>
   </view>

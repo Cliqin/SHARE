@@ -9,13 +9,21 @@ Page({
     temp_imgList: [], //预览照片的临时地址
     cloud_imgList: [], //保存到云存储的地址
     sex: '', //用户性别
-    nickName: '', //用户名字
+    nickname: '', //用户名字
+    inputValue:'',
+    avatar:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const avatar = wx.getStorageSync('avatar')
+    const nickname = wx.getStorageSync('nickname')
+    this.setData({
+      avatar,
+      nickname
+    })
     const db = wx.cloud.database()
     db.collection('Users')
       .where({
@@ -27,10 +35,10 @@ Page({
           console.log("查询到了")
           console.log(res)
           this.setData({
-            temp_imgList: res.data[0]['avator']
+            temp_imgList: res.data[0]['avatar']
 
           })
-          app.globalData.avator = res.data[0]['avator']
+          app.globalData.avatar = res.data[0]['avatar']
         } else {
           console.log("查询不到")
           console.log(res)
@@ -55,7 +63,7 @@ Page({
       sizeType: ['compressed'],
       sourceType: ['album', "camera"],
       success: (res) => {
-        
+
         var temp_imgList = []
         for (let i = 0; i < res.tempFiles.length; i++) {
           temp_imgList.push(res.tempFiles[i].tempFilePath)
@@ -74,8 +82,8 @@ Page({
             that.setData({
               cloud_imgList: result
             })
-            app.globalData.avator = result
-            
+            app.globalData.avatar = result
+
           })
           .catch(err => {
             console.error(err)
@@ -104,12 +112,15 @@ Page({
             })
             .update({
               data: {
-                avator: this.data.cloud_imgList[0]
+                avatar: this.data.cloud_imgList[0],
+                nickname:this.data.inputValue
               }
             })
             .then(res => {
               console.log("更新成功")
               wx.hideLoading()
+              wx.setStorageSync('avatar', this.data.cloud_imgList[0])
+              wx.setStorageSync('nickname', this.data.inputValue)
             })
             .catch(res => {
               console.log("更新失败")
@@ -120,7 +131,8 @@ Page({
           db.collection('Users')
             .add({
               data: {
-                avator: this.data.cloud_imgList[0],
+                avatar: this.data.cloud_imgList[0],
+                nickname:this.data.inputValue
               }
             })
             .then(res => {
@@ -161,6 +173,10 @@ Page({
       })
 
     })
+  },
+  getInputValue(event) {
+    console.log(event.detail.value)
+    this.data.inputValue = event.detail.value
   },
   /**
    * 生命周期函数--监听页面显示

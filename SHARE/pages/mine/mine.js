@@ -3,32 +3,21 @@ Page({
   data: {
     userInfo: app.globalData.userInfo,
     hasUserInfo: false,
-    canIUseGetUserProfile: false,
-    avator:'',
-    nickname:'',
+    avatar: '',
+    nickname: '',
   },
   onLoad() {
-    if (wx.getUserProfile) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        avator:app.globalData.avator,
-      })
-    }
-  },
-  getUserProfile(e) {
-    wx.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
+    console.log('what')
+    this.setData({
+      userInfo: app.globalData.userInfo,
+      avatar: app.globalData.avatar,
+      nickname:app.globalData.nickName
     })
+    wx.setStorageSync('avatar', app.globalData.avatar)
+    wx.setStorageSync('nickname', app.globalData.nickName)
   },
   ToMy(e) {
     //跳转页面
-    console.log(e.target.dataset.op)
     switch (e.target.dataset.op) {
       case "Post":
         wx.navigateTo({
@@ -55,9 +44,11 @@ Page({
         return
     }
   },
-  onShow(){
+  onShow() {
     this.setData({
-      avator:app.globalData.avator
+      userInfo: app.globalData.userInfo,
+      avatar: app.globalData.avatar,
+      nickname:app.globalData.nickName
     })
   }
 })

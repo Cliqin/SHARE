@@ -2,34 +2,34 @@
 
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow " bindtap="chooseImage">
-      <view class="content">
+      <view class="content content cu-form-group">
         <text class="text-grey margin-right">头像</text>
         <image class="cu-avatar xl round margin-left" src="{{temp_imgList}}" mode="aspectFill"></image>
       </view>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" hover-class="none">
+      <navigator class="content content cu-form-group" hover-class="none">
         <text class="text-grey margin-right">性别</text>
       </navigator>
     </view>
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/log/log" hover-class="none">
+    <view class="cu-item arrow ">
+      <navigator class="content cu-form-group " url="/pages/about/log/log" hover-class="none">
         <text class="text-grey margin-right">昵称</text>
+        <input placeholder="{{nickname}}" bindinput="getInputValue" value="{{inputValue}}"></input>
       </navigator>
     </view>
     <view class="cu-item arrow">
-      <view class="content">
+      <view class="content content cu-form-group">
         <text class="text-grey margin-right">学校</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <button class="cu-btn content">
-
-        <text class="text-grey margin-right">手机</text>
+    <view class="cu-item arrow ">
+      <button class="cu-btn content content cu-form-group">
+        <text class="text-grey margin-right content cu-form-group">手机</text>
       </button>
     </view>
     <view class="cu-item arrow">
-      <navigator class="content" url="/pages/about/test/list" hover-class="none">
+      <navigator class="content content cu-form-group" url="/pages/about/test/list" hover-class="none">
         <text class="text-grey margin-right">星座</text>
       </navigator>
     </view>

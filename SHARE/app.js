@@ -20,35 +20,14 @@ App({
           success(res) {
             console.log(res)
             that.globalData.openid = res.result.openid
-            const db = wx.cloud.database()
-            db.collection('Users')
-              .where({
-                _openid: that.globalData.openid
-              })
-              .get()
-              .then(res => {
-                if (res.data.length != 0) {
-                  console.log("查询到了")
-                  console.log(res)
-                  that.globalData.avator = res.data[0]['avator']
-                } else {
-                  console.log("查询不到")
-                  console.log(res)
-                }
-              })
-              .catch(res => {
-                console.log("查询方法失败")
-                console.log(res)
-              })
           }
         })
     }
-
   },
   globalData: {
     userinfo: null,
     openid: null,
     nickName: '',
-    avator: ''
+    avatar: null
   }
 });
