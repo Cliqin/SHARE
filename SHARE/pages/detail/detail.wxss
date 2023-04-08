@@ -1,5 +1,17 @@
+page {
+  /* height:100%; */
+  display: flex;
+  flex-direction: column;
+}
 .detail {
-	background-color: #fff;
+  background-color: #fff;
+  height: auto;
+  overflow:auto;
+}
+
+.count-comment {
+  color:slategrey;
+  font-size: 26rpx;
 }
 .title-bar {
     font-size: 30px;
@@ -19,7 +31,10 @@
   height: 100rpx;
   border-radius: 20rpx;
 }
-
+.com-face-img {
+  width:80rpx;
+  height: 80rpx;
+}
 .right {
 	display: flex;
 	flex-direction: column;
@@ -32,8 +47,15 @@
 	margin-top: 6rpx;
 	margin-bottom: 26rpx;
 }
+.com-nickname {
+  font-size:26rpx;
+}
 .time {
 	color:gray;
+}
+.com-time {
+  margin-top:20rpx;
+  color:gray;
 }
 .text {
 	background-color: rgb(255, 255, 255);
@@ -59,19 +81,40 @@
 .iconfont.icon-icon-test20 {
   color: rgb(112, 121, 241);
   font-size: 60rpx;
-	margin-right: 20rpx;
-  
+  line-height: 60rpx;
+  height: 60rpx;
+  text-align: center;
+}
+
+.share-button{
+
+  position: relative;
+  left:-40rpx;
+  top:23rpx;
+  border: none; background: none;
+  background-color: rgba(184, 15, 15,0);
+}
+.share-button::after{
+  border: none
 }
 
 .iconfont.icon-icon {
+  position: relative;
+  top:-4rpx;
+  margin-left:-60rpx;
   color: gray;
-	font-size: 60rpx;
+  font-size: 60rpx;
 }
 .comment {
+  position: relative;
+  top:-5rpx;
+  overflow: auto;
+  height: 700rpx;
+  display: flex;
+  flex-direction: column;
   padding:10rpx;
   margin-top: 30rpx;
-	background-color: #fff;
-	height: 100%
+  background-color: #fff;
 }
 
 .user-comment {
@@ -81,37 +124,50 @@
  padding-bottom: 20rpx;
 }
 
+.scroll-content {
+  flex: 1;
+  overflow-y: scroll;
+}
+
 .comment-user-bar {
+  overflow: auto;
+  height:auto;
   display: flex;
+  flex:1;
 	flex-direction: row;
   padding: 20rpx 20rpx 40rpx 20rpx;
+  
 }
 
 .home-header-line {
 
   background: #e0e3da;
-
   width: 100%;
-
   height: 2rpx;
 
 }
 
 .comment-content {
+
+  /* background-color: rgb(236, 236, 236); */
+  border-radius:10rpx ;
   display: flex;
   margin-top: 25rpx;
-  font-size: 34rpx;
+  font-size: 30rpx;
   letter-spacing: 2rpx;
+  padding-left:20rpx;
+}
+.color-gray {
+  background-color: rgb(236, 236, 236);
 }
 .home-header-line1 {
 
   background: #e0e3da;
 
   width: 100%;
-
   height: 2rpx;
-  
-  margin-top: 50rpx;
+  margin-top: 30rpx;
+  margin-bottom: -20rpx;
 }
 
 .reply {
@@ -137,13 +193,14 @@
 
 /* 发布评论 */
 .pub-comment {
+  
   background-color: #F7F7F7;
-  padding: 20rpx 70rpx;
+  padding: 0rpx 70rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
   position: fixed;
-  bottom: 0;
+  bottom: 5rpx;
 }
 .pub-left {
   background-color: #fff;
@@ -156,8 +213,15 @@
   width: 500rpx;
 }
 .pub-button {
+align-items: center;
+  line-height: 32rpx;
+  font-size: 26rpx;
+  height:50rpx;
+  width: 100rpx;
   color: #7F7F7F;
   border: solid 1rpx #7F7F7F;
   border-radius: 10rpx;
   padding: 10rpx 20rpx;
+  margin-left: 20rpx;
 }
+

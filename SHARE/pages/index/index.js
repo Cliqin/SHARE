@@ -116,14 +116,13 @@ console.log(app.globalData.openid)
 todetail(event) {
 console.log(event.currentTarget.dataset.id)
   wx.navigateTo({
-
       url:'/pages/detail/detail?id='+ event.currentTarget.dataset.id,
     }
   )
 },
 
 deleteAction(event){
-
+  console.log(event)
   console.log(event.currentTarget.dataset.id)
 
   var that = this;

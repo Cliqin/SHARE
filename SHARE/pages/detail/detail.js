@@ -18,20 +18,25 @@ Page({
       openid : app.globalData.openid
     })
     this.data.id=options.id
+   this.getDetail()
+  },
+  getDetail()
+  {
     var that =this
-    console.log(options.id)
-    wx.cloud.database().collection('share').doc(options.id).get({
+    wx.cloud.database().collection('share').doc(that.data.id).get({
       success(res){
         console.log(res)
         var actions = res.data
         actions.time=util.formatTime(new Date(actions.time))
+        for(var l in actions.commentList){
+          actions.commentList[l].time = util.formatTime(new Date(actions.commentList[l].time))
+        } 
         that.setData({
           actions:res.data
         })
       }
     })
   },
-
   delete()
   {
     console.log(this.data.id)
@@ -74,18 +79,17 @@ publishComment(){
       url: '/pages/home/home',
     })
 }
-else {
+else {  
+	var that =this;
   console.log(that.data.id)
-  var that = this;
   wx.cloud.database().collection('share').doc(that.data.id).get({
     success(res){
-      console.log(res)
       var actions = res.data
       var comment = {}
       comment.nickName = app.globalData.userInfo.nickName
       comment.faceImg = app.globalData.userInfo.avatarUrl
       comment.openid = app.globalData.openid
-      comment.text = that.data.inputValue
+			comment.text = that.data.inputValue
       comment.time = Date.now()
       comment.toOpenid = that.data.toOpenid
       comment.toNickname = that.data.toNickname
@@ -104,13 +108,51 @@ else {
             inputValue :'',
             plcaceHolder:'评论',
             toOpenid:'',
-            toOpenid:''
+            toNickname:''
           })
         }
       })
   }
 })
 }
+},
+deleteComment(event){
+
+  var that = this;
+  console.log(event.currentTarget.dataset.index)
+
+  wx.showModal({
+    title:'提示',
+    content:'确定要删除此评论吗？',
+    success(res){
+      if(res.confirm){
+        var index = event.currentTarget.dataset.index
+        wx.cloud.database().collection('share').doc(that.data.id).get({
+          success(res){
+            console.log(res)
+            var action = res.data
+
+            action.commentList.splice(index,1)
+            wx.cloud.database().collection('share').doc(that.data.id).update({
+              data: {
+                commentList: action.commentList
+              },
+              success(res){
+                console.log(res)
+                wx.showToast({
+                  title: '删除成功',
+                })
+                that.getDetail()
+              }
+            })
+          }
+        })
+      }else if(res.cancel){
+
+      }
+    }
+  })
+
 },
   /**
    * 生命周期函数--监听页面显示
@@ -143,7 +185,9 @@ else {
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
+  onShareAppMessage(event) {
+    console.log(event)
+    
   }
 })
 

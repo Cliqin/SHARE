@@ -450,7 +450,6 @@ background-color: #fff;
 }
 .recomend {
   font-weight: 550;
-
   width: 150rpx;
   height: 50rpx;
   text-align: center;
@@ -462,6 +461,9 @@ background-color: #fff;
 .red {
   color:rgb(223, 61, 50);
   background-color: #fff;
+}
+.default {
+  color:palevioletred;
 }
 .publish {
   display: flex;

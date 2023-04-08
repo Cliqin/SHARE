@@ -1,5 +1,4 @@
 <view class="detail">
-	
 <view class="title-bar"> 
   {{actions.title}}
 </view >
@@ -20,7 +19,9 @@
 	<view >
 		<text class="iconfont icon-icon-test59"></text>
 		<text class="iconfont icon-icon-test7"></text>
+    <button open-type="share" size="mini" class="share-button" data-index="{{numm}}">
 		<text class="iconfont icon-icon-test20"></text>
+    </button>
 		<text class="iconfont icon-icon" bindtap="delete" wx:if="{{openid == actions._openid}}"></text>
 		
 	</view>
@@ -28,41 +29,42 @@
 
 <view class="comment"> 
 <view class="user-comment">
-	<text >  1条评论</text>
+	<text class="count-comment"> {{actions.commentList.length>0?actions.commentList.length+'条评论':'暂无评论'}} </text>
   </view>
   <view class="container">
 <!-- 画分割线 -->
 <view class="home-header-line"></view>
 </view>
-
-  <view class="comment-user-bar">
+<scroll-view class="scroll-content" scroll-y="true">
+<block wx:for="{{actions.commentList}}" wx:key="index">
+  <view class="comment-user-bar" bindlongtap="{{openid == item.openid?'deleteComment':''}}" data-index="{{index}}" bindtap="huifuComment" >
 <view class="left">
-  <image class="face-img" src="/images/kaoyan.png"></image>
+  <image class="com-face-img" src="{{item.faceImg}}"></image>
 </view>
 <view class="right">
-  <view class="nickname">dream_ye</view>
-  <view>
-    
-  </view>
-	<view class="time">
-		2023.3.14.19:18
+		<view class="com-nickname">{{item.nickName}}</view>
+	<view class="com-time">
+		{{item.time}}
 	</view>
-  <view class="comment-content"> 
-  感谢博主大大的分享，很受用，今年一研为定！
+  <view class="comment-content {{item.openid==openid?'color-gray':'default'}}" > 
+ {{item.text}}
   </view>
-  <view class="reply">
-    <button class="comment-reply">回复
+  <!-- <view class="reply">
+    <button class="comment-reply" wx:if="{{item.toOpenid}}">回复
 		<text class="iconfont icon-icon-test4"></text>
     </button>
-  </view>
+  </view> -->
   <view class="container">
 <!-- 画分割线 -->
 <view class="home-header-line1"></view>
 </view>
 </view>
 </view>
-
+</block>
+</scroll-view>
 </view>
+<!-- </block> -->
+
 <view class="pub-comment">
   <view class="pub-left">
     <input class="pub-input" placeholder="{{plcaceHolder}}" bindinput="getInputValue" value="{{inputValue}}"></input>
