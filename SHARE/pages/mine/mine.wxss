@@ -28,8 +28,8 @@
   justify-content: center;
   align-items: center;
   font-size: 30rpx;
-  background-color:gray;
-  color:salmon;
+  background-color:rgb(180, 178, 178);
+  color:rgb(58, 50, 49);
   margin-top: 50rpx;
 }
 .my{
@@ -37,7 +37,7 @@
   padding-top: 10rpx;
 }
 .my-item{
-  background-color: seashell;
+  background-color: rgb(255, 255, 255);
   display: flex;
   height: 120rpx;
   margin-top: 10rpx;

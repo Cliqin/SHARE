@@ -10,13 +10,6 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/post/post",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
           "pathName": "pages/mine/mine",
           "query": "",
           "launchMode": "default",
@@ -32,6 +25,33 @@
         {
           "name": "",
           "pathName": "pages/home/home",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/mine/MyRecent/myRecent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/home/home",
+          "query": "",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": false,
+            "pages": [
+              "pages/mine/MyProfile/myProfile"
+            ]
+          }
+        },
+        {
+          "name": "",
+          "pathName": "pages/mine/MyProfile/myProfile",
           "query": "",
           "launchMode": "default",
           "scene": null

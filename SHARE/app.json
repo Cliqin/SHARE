@@ -6,7 +6,11 @@
     "pages/post/post",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/mine/MyPost/myPost",
+    "pages/mine/MyRecent/myRecent",
+    "pages/mine/MyInteract/myInteract",
+    "pages/mine/MyProfile/myProfile"
   ],
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"

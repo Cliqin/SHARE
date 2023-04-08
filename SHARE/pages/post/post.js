@@ -6,8 +6,8 @@ Page({
     ifImage: false, //是否有图片
     title: '',
     content: '',
-    temp_imgList: [],//预览照片的临时地址
-    cloud_imgList: [],//保存到云存储的地址
+    temp_imgList: [], //预览照片的临时地址
+    cloud_imgList: [], //保存到云存储的地址
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -103,8 +103,7 @@ Page({
         icon: "none",
       })
       return
-    }
-    else if (app.globalData.userInfo == null) {
+    } else if (app.globalData.userInfo == null) {
       wx.navigateTo({
         url: '/pages/home/home',
 
@@ -112,8 +111,7 @@ Page({
         title: '请先登录',
 
       })
-    }
-    else {
+    } else {
       wx.showLoading({
         title: '上传中'
       })
@@ -128,9 +126,8 @@ Page({
       Promise.all(uploadTask).then((result) => {
         wx.hideLoading()
         that.setData({
-          cloud_imgList: result
-        }),
-        
+            cloud_imgList: result
+          }),
           //提交数据库
           db.collection("share").add({
             data: {
@@ -150,12 +147,13 @@ Page({
                 })
             }
           })
-      }).catch(err => {
+      })
+      .catch(err => {
         console.error(err)
       })
     }
   },
-  
+
 
   // 异步上传单个文件
   uploadFile: function (index, filePath) {
@@ -184,7 +182,6 @@ Page({
   //全部清空数据库,慎用!!!(还没写)
   ClearDataBase() {
     const db = wx.cloud.database()
-    db.collection("share").doc().remove({
-    })
+    db.collection("share").doc().remove({})
   }
 })

@@ -1,0 +1,43 @@
+<scroll-view scroll-y class="scrollPage">
+
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow " bindtap="chooseImage">
+      <view class="content">
+        <text class="text-grey margin-right">头像</text>
+        <image class="cu-avatar xl round margin-left" src="{{temp_imgList}}" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" hover-class="none">
+        <text class="text-grey margin-right">性别</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/log/log" hover-class="none">
+        <text class="text-grey margin-right">昵称</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <view class="content">
+        <text class="text-grey margin-right">学校</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content">
+
+        <text class="text-grey margin-right">手机</text>
+      </button>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/test/list" hover-class="none">
+        <text class="text-grey margin-right">星座</text>
+      </navigator>
+    </view>
+  </view>
+  <view class="cu-tabbar-height"></view>
+
+  <view class="margin-tb-sm text-center">
+    <button data-op="{{temp_imgList[0]}}" bindtap="save" role="button" aria-disabled="false" class="cu-btn round bg-cyan">保存</button>
+  </view>
+
+</scroll-view>

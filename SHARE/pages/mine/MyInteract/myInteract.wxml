@@ -1,0 +1,6 @@
+<block >
+		<view class="flex flex-direction align-center margin-xl">
+			<image style="width:150rpx;height:150rpx" src="https://cos.ifeel.vip/gzhu-pi/images/icon/empty.svg"></image>
+			<text class="text-gray">功能正在开发中</text>
+		</view>
+</block>

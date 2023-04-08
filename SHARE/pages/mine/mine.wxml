@@ -12,55 +12,53 @@
     </block>
     </view> -->
 <view class="mine-container">
-<view class="mine-user">
-  <view class="user">
-    <image class="userinfo-phote" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <view class="mine-user">
+      <view class="user">
+        <image class="userinfo-phote" src="{{avator}}" background-size="cover" bindtap="ToMy" data-op="Profile"></image>
+      </view>
+      <view class="userinfo-name">
+        <view class="userinfo-nickname">{{nickName?nickName:"未设置名称"}}</view>
+        <view class="edit"bindtap="ToMy" data-op="Profile">查看或编辑个人主页</view>
+      </view>
   </view>
-    <view class="userinfo-name">
-      <view class="userinfo-nickname">{{userInfo.nickName}}</view>
-    <view class="edit">查看或编辑个人主页</view>
-  </view>
-</view>
 
-  <view class="mine" >
-      <button class="mine-button" >关注</button>
-      <button class="mine-button" >收藏</button>
-      <button class="mine-button" >最近浏览</button>
+  <view class="mine">
+    <button class="mine-button ">关注</button>
+    <button class="mine-button" bindtap="ToMy" data-op="Interact">收藏</button>
+    <button class="mine-button" bindtap="ToMy" data-op="Recent">最近浏览</button>
   </view>
 
   <view class="my">
-    <view class="my-item">
+    <view class="my-item padding-xl radius shadow-warp bg-white margin-top">
       <text>我的消息</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
-    <view class="my-item">
+    <view class="my-item padding-xl radius shadow-warp bg-white margin-top" bindtap="ToMy" data-op="Post">
       <text>我的发帖</text>
       <text class="iconfont icon-icon-test4 nav"></text>
-    </view>  
-    <view class="my-item">
+    </view>
+    <view class="my-item padding-xl radius shadow-warp bg-white margin-top">
       <text>我的草稿</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
-    <view class="my-item">
+    <view class="my-item padding-xl radius shadow-warp bg-white margin-top">
       <text>我的评论</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
-    <view class="my-item">
+    <view class="my-item padding-xl radius shadow-warp bg-white margin-top">
       <text>常见问题</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
-    <view class="my-item">
+    <view class="my-item padding-xl radius shadow-warp bg-white margin-top">
       <text>我要反馈</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
-    <view class="my-item">
+    <view class="my-item padding-xl radius shadow-warp bg-white margin-top">
       <text>联系我们</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
-    
+
   </view>
 
- 
+
 </view>
-
-

@@ -1,15 +1,17 @@
-
 const app = getApp()
 Page({
   data: {
-    userInfo:app.globalData.userInfo,
+    userInfo: app.globalData.userInfo,
     hasUserInfo: false,
     canIUseGetUserProfile: false,
+    avator:'',
+    nickname:'',
   },
   onLoad() {
     if (wx.getUserProfile) {
       this.setData({
-        userInfo: app.globalData.userInfo,  
+        userInfo: app.globalData.userInfo,
+        avator:app.globalData.avator,
       })
     }
   },
@@ -23,4 +25,39 @@ Page({
         })
       }
     })
-  },})
+  },
+  ToMy(e) {
+    //跳转页面
+    console.log(e.target.dataset.op)
+    switch (e.target.dataset.op) {
+      case "Post":
+        wx.navigateTo({
+          url: '/pages/mine/MyPost/myPost',
+        })
+        break
+      case "Interact":
+        wx.navigateTo({
+          url: '/pages/mine/MyInteract/myInteract',
+        })
+        break
+      case "Recent":
+        wx.navigateTo({
+          url: '/pages/mine/MyRecent/myRecent',
+        })
+        break
+      case "Profile":
+        wx.navigateTo({
+          url: '/pages/mine/MyProfile/myProfile',
+        })
+        break
+      default:
+        console.warn("unknown op case")
+        return
+    }
+  },
+  onShow(){
+    this.setData({
+      avator:app.globalData.avator
+    })
+  }
+})

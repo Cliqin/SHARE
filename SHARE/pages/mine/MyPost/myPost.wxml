@@ -1,0 +1,26 @@
+<view class="body">
+  <view class="{{selected?'show':'hidden'}}">
+    <block wx:for="{{actionList}}" wx:key="index">
+      <view class="cu-card article {{isCard?'no-card':''}}">
+        <view class="cu-item shadow">
+          <view class="title">
+            <view class="text-cut" bindtap="todetail" data-id="{{item._id}}">{{item.title}}</view>
+          </view>
+          <view class="content">
+            <image bindtap="viewImage" data-image_list="{{item.ifImage?item.images:[default_img]}}" src="{{item.ifImage?item.images[0]:default_img}}" mode="aspectFill"></image>
+            <view class="desc">
+              <view class="text-content" bindtap="todetail" data-id="{{item._id}}">{{item.content}}</view>
+              <view class="idanddelete">
+                <view class="cu-tag bg-red light sm round">{{item.nickName}}</view>
+                <view>
+                  <button class="cu-tag bg-red light sm round dle-btn" wx:if="{{myOpenid == item._openid}}" catchtap="deleteAction" data-id="{{item._id}}"> 删除</button>
+                </view>
+                <!-- <view class="cu-tag bg-green light sm round">史诗</view> -->
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

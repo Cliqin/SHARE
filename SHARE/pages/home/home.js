@@ -18,6 +18,8 @@ Page({
     status: 2,
     canIUseGetUserProfile: false,
     hasUserInfo: false,
+    userInfo: '',
+    avator:'',
   },
   onLoad() {
     console.log('999' + this.data.token);
@@ -37,26 +39,49 @@ Page({
       })
     }
   },
-  
+
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        console.log(e)
         console.log(res)
         this.setData({
-          userInfo: res.userInfo,
           hasUserInfo: true
         })
-        app.globalData.userInfo=res.userInfo
-        console.log(app.globalData.userInfo,'44')
+        app.globalData.userInfo = res.userInfo
+        const db = wx.cloud.database()
+        db.collection('Users')
+          .where({
+            _openid: app.globalData.openid
+          })
+          .get()
+          .then(res => {
+            if (res.data.length != 0) {
+              console.log("查询到了")
+              console.log(res)
+              this.setData({
+                avator: res.data[0]['avator']
+              })
+              app.globalData.avator = res.data[0]['avator']
+            } else {
+              console.log("查询不到")
+              console.log(res)
+            }
+          })
+          .catch(res => {
+            console.log("查询方法失败")
+            console.log(res)
+          })
+        console.log(app.globalData.userInfo, '44')
       }
     })
   },
   onShow() {
-
+    this.setData({
+      avator:app.globalData.avator
+    })
 
   },
   onHide: function () {

@@ -60,7 +60,7 @@
       <text class="iconfont icon-icon-test40 loginAvator" mode="cover" bindtap="getUserProfile"></text>
     </block>
     <block wx:else>
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" bindtap="toUser"></image>
+      <image class="userinfo-avatar" src="{{avator}}" mode="cover" bindtap="toUser"></image>
     </block>
   </view>
 </view>
