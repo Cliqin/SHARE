@@ -137,7 +137,8 @@ Page({
               title: that.data.title,
               content: that.data.content,
               images: that.data.cloud_imgList,
-              time: db.serverDate()
+              time: db.serverDate(),
+              commentList:[]
             },
             success(res) {
               console.log(res)

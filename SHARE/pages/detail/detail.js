@@ -130,16 +130,18 @@ Page({
           comment.toOpenid = that.data.toOpenid
           comment.toNickname = that.data.toNickname
           actions.commentList.push(comment)
+          //console.log(actions)
           wx.cloud.database().collection('share').doc(that.data.id).update({
             data: {
               commentList: actions.commentList
             },
             success(res) {
-              console.log(res,'ee')
+              console.log(res)
               wx.showToast({
                 title: '评论成功！',
               })
               that.getDetail()
+              console.log(1)
               that.setData({
                 inputValue: '',
                 plcaceHolder: '评论',
