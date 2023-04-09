@@ -43,7 +43,9 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function (event) {
+    console.log(event)
+    console.log(app.mould)
     console.log('加载')
     var that = this
     setTimeout(function(){
@@ -53,15 +55,64 @@ Page({
     })
     })
     const db = wx.cloud.database()
-    db.collection('share').orderBy('time','desc').get()
+    db.collection(app.mould).orderBy('time','desc').get()
     .then((res)=>{
-      console.log(res)
-      that.setData({
-          actionList: res.data
-        })
-        wx.stopPullDownRefresh()
+    console.log(res)
+    that.setData({
+      actionList: res.data
     })
-    .catch(console.error)
+    wx.stopPullDownRefresh()
+})
+.catch(console.error)
+   // const param = options.param;
+    // if (app.mould == 'kaogong') {
+    //   const db = wx.cloud.database()
+    //   db.collection('kaogong').orderBy('time','desc').get()
+    //   .then((res)=>{
+    //     console.log(res)
+    //     that.setData({
+    //         actionList: res.data
+    //       })
+    //       wx.stopPullDownRefresh()
+    //   })
+    //   .catch(console.error)
+      
+    // } else if (app.mould == 'kaoyan') {
+    //   const db = wx.cloud.database()
+    //   db.collection('kaoyan').orderBy('time','desc').get()
+    //   .then((res)=>{
+    //     console.log(res)
+    //     that.setData({
+    //         actionList: res.data
+    //       })
+    //       wx.stopPullDownRefresh()
+    //   })
+    //   .catch(console.error)
+    // }  else if (app.mould == 'jiuye') {
+    //   const db = wx.cloud.database()
+    //   db.collection('jiuye').orderBy('time','desc').get()
+    //   .then((res)=>{
+    //     console.log(res)
+    //     that.setData({
+    //         actionList: res.data
+    //       })
+    //       wx.stopPullDownRefresh()
+    //   })
+    //   .catch(console.error)
+    // }else if (app.mould == 'bisai') {
+    //   const db = wx.cloud.database()
+    //   db.collection('bisai').orderBy('time','desc').get()
+    //   .then((res)=>{
+    //     console.log(res)
+    //     that.setData({
+    //         actionList: res.data
+    //       })
+    //       wx.stopPullDownRefresh()
+    //   })
+    //   .catch(console.error)
+    // }
+    
+   
     // this.getActionList()
 
     //调用应用实例的方法获取全局数
@@ -79,7 +130,8 @@ Page({
     })
   },
 
-  toPost() {
+  toPost(event) {
+    console.log(event)
     if (app.globalData.userInfo == null) {
 
       wx.navigateTo({
@@ -91,7 +143,7 @@ Page({
     }
     else {
       wx.navigateTo({
-        url: "/pages/post/post"
+        url: "/pages/post/post?param="+event.target.dataset.param,
       })
     }
   },
