@@ -44,11 +44,10 @@ Page({
     })
   },
   onLoad: function () {
-    
     console.log('加载')
     var that = this
     setTimeout(function(){
-console.log(app.globalData.openid)
+    console.log(app.globalData.openid)
     that.setData ({
       myOpenid:app.globalData.openid
     })
@@ -81,7 +80,7 @@ console.log(app.globalData.openid)
   },
 
   toPost() {
-    if (app.globalData.avatar == null) {
+    if (app.globalData.userInfo == null) {
 
       wx.navigateTo({
         url: '/pages/home/home'
@@ -122,27 +121,57 @@ console.log(event.currentTarget.dataset.id)
 },
 
 deleteAction(event){
-  console.log(event)
-  console.log(event.currentTarget.dataset.id)
-
+  var Id = event.currentTarget.dataset.id;
   var that = this;
+
   wx.showModal({
-    title:'提示',
-    content:'确定要删除此帖吗？',
-    success(res){
-      if(res.confirm){
-  wx.cloud.database().collection('share').doc(event.currentTarget.dataset.id).remove({
-    success(res){
-      console.log(res)
-      wx.showToast({
-        title: '删除成功！',
-      })
-      that.onLoad()
-    }
-  })
+    title: "提示",
+    content: "确定要删除该帖子吗？",
+    success(res) {
+      if (res.confirm) {
+        try {
+          // 调用云数据库 API 删除指定 id 的帖子
+          wx.cloud.database().collection('share').doc(Id).remove({
+            success: function(res) {
+              console.log(res);
+              // 删除成功，弹出提示框
+              wx.showToast({
+                title: "删除成功",
+                icon: "none"
+              });
+              // 刷新页面
+              that.onLoad();
+            },
+            fail: function(error) {
+              // 删除失败，打印错误信息
+              console.error(error);
+              wx.showToast({
+                title: "删除失败，请重试",
+                icon: "none"
+              });
+            }
+          });
+        } catch (error) {
+          // 捕获异常错误
+          console.error(error);
+          wx.showToast({
+            title: "删除出现异常错误，请重试",
+            icon: "none"
+          });
+        }
       }
-}
-  })
+    }
+  });
+},
+onShareAppMessage(event)
+{
+  console.log(event)
+  console.log(this.data.actions)
+  return{
+    title:'Welcome to SHARE',
+    imageUrl:'',
+    path:'pages/index/index'
+  }
 },
   onPullDownRefresh() {
     // this.getActionList() 

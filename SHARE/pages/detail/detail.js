@@ -69,6 +69,11 @@ Page({
         for (var l in actions.commentList) {
           actions.commentList[l].time = util.formatTime(new Date(actions.commentList[l].time))
         }
+        for(var l in actions.prizeList){
+          if(actions.prizeList[l].openid == app.globalData.openid){
+            actions.isPrized = true
+          }
+        }
         that.setData({
           actions: res.data
         })
@@ -108,6 +113,83 @@ Page({
 
   },
 
+  prizeAction(){
+    var that =this
+    if (app.globalData.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/home/home'
+      })  
+       wx.showToast({
+          title: '请先登录',
+        })
+    }
+    else {
+      console.log(that.data.id)
+      var that = this;
+      wx.cloud.database().collection('share').doc(that.data.id).get({
+        success(res){
+          console.log(res)
+          var action = res.data
+          var tag = false
+          var index 
+          for(var l in action.prizeList){
+            if(action.prizeList[l].openid == app.globalData.openid){
+              tag = true
+              index = l
+              break
+            }
+          }
+          if(tag){
+            //之前点赞过 删除点赞记录
+            //action.prizeList.splice(index,1)
+
+            //解决手机取消点赞时候设置为null的bug
+            let prizeList = []
+            for(let i in action.prizeList){
+              if(index != i){
+                prizeList.push(action.prizeList[i])
+              }
+            }
+
+            console.log(action)
+            wx.cloud.database().collection('share').doc(that.data.id).update({
+              data: {
+                prizeList: prizeList
+              },
+              success(res){
+                console.log(res)
+                that.getDetail()
+              }
+            })
+          }else{
+            //之前未点赞  添加点赞记录
+            var user = {}
+           // user.nickName = app.globalData.userInfo.nickName
+           // user.faceImg = app.globalData.userInfo.avatarUrl
+            user.openid = app.globalData.openid
+            action.prizeList.push(user)
+
+            console.log(action.prizeList)
+            wx.cloud.database().collection('share').doc(that.data.id).update({
+              data: {
+                prizeList: action.prizeList
+              },
+              success(res){
+                console.log(res)
+                wx.showToast({
+                  title: '点赞成功！',
+                })
+                that.getDetail()
+              }
+            })
+          }
+
+        }
+      })
+
+    } 
+
+   },
   publishComment() {
     var that = this;
 
@@ -189,8 +271,18 @@ Page({
 
         }
       }
-    })
+    })        
 
+  },
+  onShareAppMessage(event)
+  {
+    console.log(event)
+    console.log(this.data.actions)
+    return{
+      title:this.data.actions.content,
+      imageUrl:this.data.actions.images[0],
+      path:'pages/detail/detail?id='+this.data.id
+    }
   },
   /**
    * 生命周期函数--监听页面显示
@@ -218,12 +310,7 @@ Page({
    */
   onPullDownRefresh() {},
 
-
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage(event) {
-    console.log(event)
-
-  }
 })

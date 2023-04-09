@@ -67,11 +67,36 @@ page {
 
 .iconfont.icon-icon-test59 {
   color: rgb(238, 115, 135);
-	font-size: 60rpx;
+	font-size: 62rpx;
 	margin-left:30rpx;
 	margin-right: 20rpx;
 }
 
+.iconfont.icon-aixin {
+  color: rgb(238, 115, 135);
+	font-size: 62rpx;
+	margin-left:30rpx;
+	margin-right: 20rpx;
+}
+.minicon {
+  padding-right: 15rpx;
+  margin-left: 30rpx;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.prize {
+  font-display: flex;
+  font-display: row;
+}
+.count-prize {
+  font-size: 30rpx;
+  position: relative;
+  top:-10rpx;
+  left: -5rpx;
+  color:rgb(224, 89, 89)
+}
 .iconfont.icon-icon-test7 {
   color:rgb(192, 226, 43);
 	font-size: 60rpx;
@@ -80,17 +105,17 @@ page {
 
 .iconfont.icon-icon-test20 {
   color: rgb(112, 121, 241);
-  font-size: 60rpx;
-  line-height: 60rpx;
-  height: 60rpx;
+  font-size: 58rpx;
+  line-height: 58rpx;
+  height: 58rpx;
   text-align: center;
 }
 
 .share-button{
 
-  position: relative;
+   position: relative;
   left:-40rpx;
-  top:23rpx;
+  /* top:23rpx;  */
   border: none; background: none;
   background-color: rgba(184, 15, 15,0);
 }

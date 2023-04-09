@@ -55,11 +55,11 @@
 <!-- 个人中心 -->
 <view class='button-center' style='top: -{{0.25*windowHeight+0.5*btnSize}}px;height: {{btnSize}}px; width: {{btnSize}}px'>
   <view class='button-center-inner' style='height: {{0.5*btnSize}}px;width: {{0.5*btnSize}}px;'>
-    <block wx:if="{{!hasAvatar}}">
-      <text class="iconfont icon-icon-test40 loginAvatar" mode="cover" bindtap="toUser"></text>
+    <block wx:if="{{!hasUserInfo}}">
+      <text class="iconfont icon-icon-test40 loginAvatar" mode="cover" bindtap="getUserProfile"></text>
     </block>
     <block wx:else>
-      <image class="userinfo-avatar" src="{{avatar}}" mode="cover" bindtap="toUser"></image>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" bindtap="toUser"></image>
     </block>
   </view>
 </view>

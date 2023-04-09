@@ -16,14 +16,18 @@
 <view class="text">
 {{actions.content}}
 </view>
-	<view >
-		<text class="iconfont icon-icon-test59"></text>
-		<text class="iconfont icon-icon-test7"></text>
+	<view class="minicon">
+  <view class="prize">
+    
+
+		<text class="{{actions.isPrized?'iconfont icon-aixin':'iconfont icon-icon-test59'}}" bindtap="prizeAction"></text>
+    <text class="count-prize">{{actions.prizeList.length>0?actions.prizeList.length+'':''}}</text>
+  </view>
+		<!-- <text class="iconfont icon-icon-test7"></text> -->
     <button open-type="share" size="mini" class="share-button" data-index="{{numm}}">
 		<text class="iconfont icon-icon-test20"></text>
     </button>
 		<text class="iconfont icon-icon" bindtap="delete" wx:if="{{openid == actions._openid}}"></text>
-		
 	</view>
 </view>
 

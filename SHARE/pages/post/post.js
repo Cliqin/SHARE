@@ -103,7 +103,7 @@ Page({
         icon: "none",
       })
       return
-    } else if (app.globalData.avatar == null) {
+    } else if (app.globalData.userInfo == null) {
       wx.navigateTo({
         url: '/pages/home/home',
 
@@ -119,7 +119,7 @@ Page({
 
       //异步批量上图片,上传完成后再提交到数据库
       let uploadTask = []
-      const db = wx.cloud.database()
+      const db = wx.cloud.database()    
       const avatar = wx.getStorageSync('avatar')
       const nickname = wx.getStorageSync('nickname')
       for (let i = 0; i < this.data.temp_imgList.length; i++) {
@@ -134,13 +134,16 @@ Page({
             db.collection("share").add({
               data: {
                 ifImage: that.data.ifImage,
-                nickName: nickname,
-                faceImg: avatar,
+                // nickName: nickname,
+                // faceImg: avatar,
+                nickName: app.globalData.userInfo.nickName,
+                faceImg: app.globalData.userInfo.avatarUrl,
                 title: that.data.title,
                 content: that.data.content,
                 images: that.data.cloud_imgList,
                 time: db.serverDate(),
-                commentList: []
+                commentList: [],
+                prizeList:[]
               },
               success(res) {
                 console.log(res)
