@@ -132,7 +132,7 @@ deleteAction(event){
         try {
           // 调用云数据库 API 删除指定 id 的帖子
           wx.cloud.database().collection('share').doc(Id).remove({
-            success: function(res) {
+            success (res) {
               console.log(res);
               // 删除成功，弹出提示框
               wx.showToast({

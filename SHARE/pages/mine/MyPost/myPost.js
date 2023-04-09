@@ -26,7 +26,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
     const db = wx.cloud.database()
     db.collection('share').orderBy('time', 'desc')
       .where({
@@ -95,7 +94,7 @@ Page({
           wx.cloud.database().collection('share')
           .doc(event.currentTarget.dataset.id)
           .remove({
-            success(res) {
+            success(res) {  
               console.log(res)
               wx.showToast({
                 title: '删除成功！',

@@ -1,19 +1,36 @@
 /* pages/mine/mine.wxss */
+
+page {
+  height: 100%;
+  background-color: rgb(248, 244, 244);
+}
 .mine-user{
+  align-items: center;
+  height: 150rpx;
   display:flex;
+  background: #D3CCE3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #f5f2f8, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.userinfo-name {
+  margin-bottom: 40rpx;
+  align-items: center;
 }
 .user .userinfo-phote{
   flex: 1;
   display: inline-block;
-  width: 150rpx;
-  height: 150rpx;
+  width: 130rpx;
+  height: 130rpx;
   border-radius: 80rpx;
 }
 .userinfo-nickname{
+  color:gray;
   margin-left: 21rpx;
   margin-top: 40rpx;
 }
 .edit{
+  color:gray;
   margin-left: 21rpx;
 }
 .mine{
@@ -28,7 +45,10 @@
   justify-content: center;
   align-items: center;
   font-size: 30rpx;
-  background-color:rgb(180, 178, 178);
+  background: #D3CCE3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #f6f5f7, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
   color:rgb(58, 50, 49);
   margin-top: 50rpx;
 }
@@ -37,12 +57,17 @@
   padding-top: 10rpx;
 }
 .my-item{
-  background-color: rgb(255, 255, 255);
+  width: 100%;
+ background: #D3CCE3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #f5f2f8, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: flex;
   height: 120rpx;
   margin-top: 10rpx;
   border-top: 1rpx solid #efefef;
+  margin-left: 10rpx;
   border-bottom: 1rpx solid #efefef;
+  border-radius: 10rpx;
 }
 .my-item text{
   display: flex;
@@ -52,7 +77,12 @@
   margin-right: 21rpx;
 
 }
-
+.bottom-share {
+  position: relative;
+  top:-50rpx;
+  left:45rpx;
+  
+}
 .nav{
   margin: auto auto;
 }

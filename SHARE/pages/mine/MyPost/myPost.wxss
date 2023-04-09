@@ -1,0 +1,8 @@
+.dle-btn {
+  margin-left: 10rpx;
+}
+
+.idanddelete {
+  display: flex;
+  flex-direction: row;
+}
