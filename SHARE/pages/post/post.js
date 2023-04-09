@@ -1,5 +1,5 @@
 var app = getApp();
-
+const db = wx.cloud.database() 
 Page({
 
   data: {
@@ -10,6 +10,7 @@ Page({
     cloud_imgList: [], //保存到云存储的地址
   },
   onLoad: function (options) {
+    console.log(db.collection(app.mould))
     // 页面初始化 options为页面跳转所带来的参数
   },
   onReady: function () {
@@ -119,7 +120,6 @@ Page({
 
       //异步批量上图片,上传完成后再提交到数据库
       let uploadTask = []
-      const db = wx.cloud.database()    
       const avatar = wx.getStorageSync('avatar')
       const nickname = wx.getStorageSync('nickname')
       for (let i = 0; i < this.data.temp_imgList.length; i++) {
@@ -131,7 +131,8 @@ Page({
               cloud_imgList: result
             }),
             //提交数据库
-            db.collection("share").add({
+              
+            db.collection(app.mould).add({
               data: {
                 ifImage: that.data.ifImage,
                 // nickName: nickname,

@@ -146,25 +146,37 @@ Page({
   onHide: function () {
 
   },
-  toEntrance() {
+  toEntrance(event){//考公
+    console.log(event.currentTarget.dataset.param)
+    app.mould = event.currentTarget.dataset.param
+    console.log(app.mould)
     wx.navigateTo({
-      url: '/pages/index/index',
+      url: '/pages/index/index?param='+app.mould,
     })
   },
-  toGuest() {
+  toGuest(event) {
+    app.mould=event.target.dataset.param
+    console.log(app.mould)
+
     wx.navigateTo({
-      url: '/pages/index/index',
+      url: '/pages/index/index?param='+event.target.dataset.param,
     })
   },
-  toGroup() {
+  toGroup(event) {
+    app.mould=event.target.dataset.param
+    console.log(app.mould)
+
     wx.navigateTo({
-      url: '/pages/index/index',
+      url: '/pages/index/index?param='+event.target.dataset.param,
     })
 
   },
-  toPark() {
+  toPark(event) {
+    app.mould=event.target.dataset.param
+    console.log(app.mould)
+
     wx.navigateTo({
-      url: '/pages/index/index',
+      url: '/pages/index/index?param='+event.target.dataset.param,
     })
   },
   toUser() {

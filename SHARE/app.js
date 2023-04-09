@@ -34,6 +34,8 @@ App({
     userinfo: null,
     openid: null,
     nickName: '',
-    avatar: null
+    avatar: null,
+    mould:'',
+
   }
 });

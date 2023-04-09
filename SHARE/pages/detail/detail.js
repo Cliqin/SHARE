@@ -21,7 +21,7 @@ Page({
     this.getDetail()
 
     var that = this
-    wx.cloud.database().collection('share').doc(that.data.id).get({
+    wx.cloud.database().collection(app.mould).doc(that.data.id).get({
       success(res) {
         //console.log(res)
         var actions = res.data
