@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.mould)
     this.setData({
       openid: app.globalData.openid
     })
@@ -61,7 +62,7 @@ Page({
   },
   getDetail() {
     var that = this
-    wx.cloud.database().collection('share').doc(that.data.id).get({
+    wx.cloud.database().collection(app.mould).doc(that.data.id).get({
       success(res) {
         console.log(res)
         var actions = res.data
@@ -88,7 +89,7 @@ Page({
       content: '确定要删除此帖吗？',
       success(res) {
         if (res.confirm) {
-          wx.cloud.database().collection('share').doc(that.data.id).remove({
+          wx.cloud.database().collection(app.mould).doc(that.data.id).remove({
             success(res) {
               console.log(res)
               wx.navigateBack({
@@ -126,7 +127,7 @@ Page({
     else {
       console.log(that.data.id)
       var that = this;
-      wx.cloud.database().collection('share').doc(that.data.id).get({
+      wx.cloud.database().collection(app.mould).doc(that.data.id).get({
         success(res){
           console.log(res)
           var action = res.data
@@ -152,7 +153,7 @@ Page({
             }
 
             console.log(action)
-            wx.cloud.database().collection('share').doc(that.data.id).update({
+            wx.cloud.database().collection(app.mould).doc(that.data.id).update({
               data: {
                 prizeList: prizeList
               },
@@ -170,7 +171,7 @@ Page({
             action.prizeList.push(user)
 
             console.log(action.prizeList)
-            wx.cloud.database().collection('share').doc(that.data.id).update({
+            wx.cloud.database().collection(app.mould).doc(that.data.id).update({
               data: {
                 prizeList: action.prizeList
               },
@@ -200,7 +201,7 @@ Page({
     } else {
       var that = this;
       console.log(that.data.id)
-      wx.cloud.database().collection('share').doc(that.data.id).get({
+      wx.cloud.database().collection(app.mould).doc(that.data.id).get({
         success(res) {
           var actions = res.data
           var comment = {}
@@ -213,7 +214,7 @@ Page({
           comment.toNickname = that.data.toNickname
           actions.commentList.push(comment)
           //console.log(actions)
-          wx.cloud.database().collection('share').doc(that.data.id).update({
+          wx.cloud.database().collection(app.mould).doc(that.data.id).update({
             data: {
               commentList: actions.commentList
             },
@@ -247,13 +248,13 @@ Page({
       success(res) {
         if (res.confirm) {
           var index = event.currentTarget.dataset.index
-          wx.cloud.database().collection('share').doc(that.data.id).get({
+          wx.cloud.database().collection(app.mould).doc(that.data.id).get({
             success(res) {
               console.log(res)
               var action = res.data
 
               action.commentList.splice(index, 1)
-              wx.cloud.database().collection('share').doc(that.data.id).update({
+              wx.cloud.database().collection(app.mould).doc(that.data.id).update({
                 data: {
                   commentList: action.commentList
                 },

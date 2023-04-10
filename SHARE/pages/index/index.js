@@ -15,7 +15,7 @@ Page({
     selected:true,
     selected1:false,
 
-    default_img: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+    default_img: "https://img.tukuppt.com/png_preview/00/45/71/JOGIZX506Q.jpg!/fw/780",
     css: {
       "bankuaiSelected": ""
     },

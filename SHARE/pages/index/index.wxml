@@ -91,15 +91,15 @@
 <view class="{{selected1?'show':'hidden'}}"><view class="cu-card article {{isCard?'no-card':''}}">
   <view class="cu-item shadow">
     <view class="title">
-      <view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+      <view class="text-cut">经验传花小程序上线了！</view>
     </view>
     <view class="content">
-      <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+      <image src="https://img.tukuppt.com/png_preview/00/45/71/JOGIZX506Q.jpg!/fw/780" mode="aspectFill"></image>
       <view class="desc">
-        <view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+        <view class="text-content"> 我们计划展开一个助力大学生成长成才的经验分享线上平台，包括但不仅限于考研，考公，竞赛，就业等问题的同学提供经验分享和沟通渠道，覆盖包括经济，文化，生活，工作等多个领域，多视角、多元地给与针对性的帮助，帮助大学生在前进道路上多总结经验，并成为当代大学生成长，学习，选择方向的一个利器和好助手。</view>
         <view>
-          <view class="cu-tag bg-red light sm round">正义天使</view>
-          <view class="cu-tag bg-green light sm round">史诗</view>
+          <view class="cu-tag bg-red light sm round">大学生</view>
+          <view class="cu-tag bg-green light sm round">share</view>
         </view>
       </view>
     </view>
