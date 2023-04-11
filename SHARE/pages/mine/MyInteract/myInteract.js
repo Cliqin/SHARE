@@ -36,7 +36,6 @@ Page({
     })).then (results=> {
       for(let i=0;i<results.length;i++){
         action=action.concat(results[i].data)
-        
       }
       console.log(action)
       this.setData({

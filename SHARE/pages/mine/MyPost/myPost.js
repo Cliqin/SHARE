@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    actionList:[],
+    actionList: [],
     default_img: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
   },
 
@@ -26,36 +26,23 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    // const db = wx.cloud.database()
-    // db.collection('share').orderBy('time', 'desc')
-    //   .where({
-    //     _openid:app.globalData.openid
-    //   })
-    //   .get()
-    //   .then((res) => {
-    //     console.log(res)
-    //     this.setData({
-    //       actionList: res.data
-    //     })
-    //     wx.stopPullDownRefresh()
-    //   })
-    //   .catch(console.error)
-    var that =this
+    var that = this
     const db = wx.cloud.database()
-    var collectionNames =['bisai','jiuye','kaogong','kaoyan']
-    let action=[] 
-    Promise.all(collectionNames.map(name=> {
-      return db.collection(name).orderBy('time','desc').where ({
-        _openid:app.globalData.openid
-      }).get()      
-    })).then (results=> {
-      for(let i=0;i<results.length;i++){
-        action=action.concat(results[i].data)
+    var collectionNames = ['bisai', 'jiuye', 'kaogong', 'kaoyan',"share"]
+    let action = []
+    Promise.all(collectionNames.map(name => {
+      return db.collection(name).orderBy('time', 'desc').where({
+        _openid: app.globalData.openid
+      }).get()
+    })).then(results => {
+      for (let i = 0; i < results.length; i++) {
+        var tmpArray = results[i].data
+        
+        action = action.concat(results[i].data)
       }
       console.log(action)
       this.setData({
-        actionList:action
-
+        actionList: action
       })
       wx.stopPullDownRefresh()
     })
@@ -77,7 +64,6 @@ Page({
   todetail(event) {
     console.log(event.currentTarget.dataset.id)
     wx.navigateTo({
-
       url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id,
     })
   },
@@ -111,16 +97,16 @@ Page({
       success(res) {
         if (res.confirm) {
           wx.cloud.database().collection('share')
-          .doc(event.currentTarget.dataset.id)
-          .remove({
-            success(res) {  
-              console.log(res)
-              wx.showToast({
-                title: '删除成功！',
-              })
-              that.onLoad()
-            }
-          })
+            .doc(event.currentTarget.dataset.id)
+            .remove({
+              success(res) {
+                console.log(res)
+                wx.showToast({
+                  title: '删除成功！',
+                })
+                that.onLoad()
+              }
+            })
         }
       }
     })
@@ -129,7 +115,7 @@ Page({
     console.log(event.currentTarget.dataset.id)
     wx.navigateTo({
 
-      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id+'&bankuai='+event.currentTarget.dataset.param,
+      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id + '&bankuai=' + event.currentTarget.dataset.param,
     })
   },
   /**

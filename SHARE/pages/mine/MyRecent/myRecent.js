@@ -78,8 +78,11 @@ Page({
   },
   todetail(event) {
     console.log(event)
+    var id = event.currentTarget.dataset.id
+    var bankuai = event.currentTarget.dataset.bankuai
+    console.log(id,bankuai)
     wx.navigateTo({
-      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id + '&bankuai=' + event.currentTarget.dataset.bankuai,
+      url: '/pages/detail/detail?id=' + id + '&param=' + bankuai,
     })
   },
   deleteAction(event) {

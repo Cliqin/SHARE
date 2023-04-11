@@ -5,35 +5,30 @@ Page({
 
   /**
    * 页面的初始数据
-      */
+   */
 
-    data: {
-    
+  data: {
+
     plcaceHolder: '评论',
     bankuai: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
-      */
+   */
 
-    onLoad: function (options) {
-		
-    console.log(options)
-    console.log('options.this.data.bankuai', options.bankuai)
-    console.log(this.data)
+  onLoad: function (options) {
+
     this.setData({
       openid: app.globalData.openid,
       bankuai: options.param
     })
-    
     this.data.id = options.id
     this.getDetail()
     console.log('this.data.bankuai', this.data.bankuai)
     var that = this
     wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).get({
       success(res) {
-        //console.log(res)
         var actions = res.data
         actions.time = util.formatTime(new Date(actions.time))
         that.setData({
@@ -44,7 +39,7 @@ Page({
     try {
       var value = wx.getStorageSync('history')
       if (value) {
-        var List = []   
+        var List = []
         List.push([that.data.id, this.data.bankuai])
 
         for (var i = 0; i < value.length; i++) {
@@ -52,7 +47,6 @@ Page({
             List.push(value[i])
           }
         }
-        console.log(List)
         try {
           wx.setStorageSync('history', List)
         } catch (e) {
@@ -76,7 +70,6 @@ Page({
     var that = this
     wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).get({
       success(res) {
-        console.log('这里有没有',res)
         var actions = res.data
         actions.time = util.formatTime(new Date(actions.time))
         for (var l in actions.commentList) {
@@ -94,46 +87,48 @@ Page({
     })
   },
   delete() {
-		if (app.globalData.userInfo == null) {
+    if (app.globalData.userInfo == null) {
       wx.navigateTo({
         url: '/pages/home/home'
       })
       wx.showToast({
         title: '请先登录',
       })
-		}
-		else {
-    console.log(this.data.id)
-    var that = this;
-    wx.showModal({
-      title: '提示',
-      content: '确定要删除此帖吗？',
-      success(res) {
-        if (res.confirm) {
-          wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).remove({
-            success(res) {
-              console.log(res)
-              wx.navigateBack({
+    } else {
+      console.log(this.data.id)
+      var that = this;
+      wx.showModal({
+        title: '提示',
+        content: '确定要删除此帖吗？',
+        success(res) {
+          if (res.confirm) {
+            wx.cloud.database()
+              .collection(that.data.bankuai)
+              .doc(that.data.id)
+              .remove({
                 success(res) {
-                  wx.showToast({
-                    title: '删除成功',
+                  console.log(res)
+                  wx.navigateBack({
+                    success(res) {
+                      wx.showToast({
+                        title: '删除成功',
+                      })
+                      that.getDetail()
+                    }
                   })
-                  that.getDetail()
                 }
               })
-            }
-					})
-					wx.stopPullDownRefresh()
+            wx.stopPullDownRefresh()
+          }
         }
-      }
-		})
-	}
+      })
+    }
   },
 
   getInputValue(event) {
 
     console.log(event.detail.value)
-    
+
     this.data.inputValue = event.detail.value
 
   },
@@ -174,7 +169,7 @@ Page({
                 prizeList.push(action.prizeList[i])
               }
             }
-    
+
             console.log(action)
             wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).update({
               data: {
@@ -192,7 +187,7 @@ Page({
             // user.faceImg = app.globalData.userInfo.avatarUrl
             user.openid = app.globalData.openid
             action.prizeList.push(user)
-    
+
             console.log(action.prizeList)
             wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).update({
               data: {
@@ -207,10 +202,10 @@ Page({
               }
             })
           }
-    
+
         }
       })
-    
+
     }
 
   },
@@ -273,7 +268,7 @@ Page({
             success(res) {
               console.log(res)
               var action = res.data
-    
+
               action.commentList.splice(index, 1)
               wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).update({
                 data: {
@@ -290,7 +285,7 @@ Page({
             }
           })
         } else if (res.cancel) {
-    
+
         }
       }
     })
@@ -306,35 +301,35 @@ Page({
   },
   /**
    * 生命周期函数--监听页面显示
-      */
+   */
 
-    onShow() {
+  onShow() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
-      */
+   */
 
-    onHide() {
+  onHide() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
-      */
+   */
 
-    onUnload() {
+  onUnload() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
-      */
+   */
 
-    onPullDownRefresh() {},
+  onPullDownRefresh() {},
 
   /**
    * 用户点击右上角分享
-      */
-      })
+   */
+})
