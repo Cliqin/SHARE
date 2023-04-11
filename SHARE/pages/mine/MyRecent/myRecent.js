@@ -26,25 +26,33 @@ Page({
     var value = wx.getStorageSync('history')
 
     if (value) {
+    var collectionNames =['bisai','jiuye','kaogong','kaoyan']
+    let action=[]
       var tmpList = []
-      for (let i = 0; i < value.length; i++) {
-        const db = wx.cloud.database()
-        db.collection('share')
-          .doc(value[i])
-          .get()
-          .then((res) => {
-            tmpList[i] = res.data
-            wx.stopPullDownRefresh()
-            this.setData({
-              actionList: tmpList
-            })
-            wx.stopPullDownRefresh()
-          })
-          .catch(console.error)
-      }
-    }
+      const db = wx.cloud.database()
 
-  },
+      for (let i = 0; i < value.length; i++) {
+        Promise.all(collectionNames.map(name=>{
+          return db.collection(name).doc(value[i]).get()
+        })).then (results=>{action=action.concat(results.data)})
+        // db.collection('share')
+        //   .doc(value[i])
+        //   .get()
+        //   .then((res) => {
+        //     tmpList[i] = res.data
+        //     wx.stopPullDownRefresh()
+        //     this.setData({
+        //       actionList: tmpList
+        //     })
+        // wx.stopPullDownRefresh()
+      }
+      this.setData({
+        actionList:action
+      })
+          
+      }
+    },
+
 
   /**
    * 生命周期函数--监听页面显示

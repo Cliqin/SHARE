@@ -183,7 +183,7 @@ deleteAction(event){
       if (res.confirm) {
         try {
           // 调用云数据库 API 删除指定 id 的帖子
-          wx.cloud.database().collection('share').doc(Id).remove({
+          wx.cloud.database().collection(app.mould).doc(Id).remove({
             success (res) {
               console.log(res);
               // 删除成功，弹出提示框

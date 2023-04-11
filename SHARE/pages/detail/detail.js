@@ -37,6 +37,7 @@ Page({
       if (value) {
         var List = []
         List.push(that.data.id)
+        console.log(value)
         for (var i = 0; i < value.length; i++) {
           if (that.data.id != value[i]) {
             List.push(value[i])
