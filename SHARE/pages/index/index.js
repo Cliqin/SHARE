@@ -104,7 +104,7 @@ Page({
   deleteAction(event) {
 
     wx.showToast({
-      title: '请进入帖子在进行删除',
+      title: '请进入帖子再进行删除哦',
       icon: "none"
     })
     // var Id = event.currentTarget.dataset.id;
