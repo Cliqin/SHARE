@@ -61,7 +61,7 @@ Page({
   },
   getDetail() {
     var that = this
-    wx.cloud.database().collection('share').doc(that.data.id).get({
+    wx.cloud.database().collection(app.mould).doc(that.data.id).get({
       success(res) {
         console.log(res)
         var actions = res.data
@@ -126,7 +126,7 @@ Page({
     else {
       console.log(that.data.id)
       var that = this;
-      wx.cloud.database().collection('share').doc(that.data.id).get({
+      wx.cloud.database().collection(app.mould).doc(that.data.id).get({
         success(res){
           console.log(res)
           var action = res.data
@@ -152,7 +152,7 @@ Page({
             }
 
             console.log(action)
-            wx.cloud.database().collection('share').doc(that.data.id).update({
+            wx.cloud.database().collection(app.mould).doc(that.data.id).update({
               data: {
                 prizeList: prizeList
               },
@@ -170,7 +170,7 @@ Page({
             action.prizeList.push(user)
 
             console.log(action.prizeList)
-            wx.cloud.database().collection('share').doc(that.data.id).update({
+            wx.cloud.database().collection(app.mould).doc(that.data.id).update({
               data: {
                 prizeList: action.prizeList
               },
@@ -193,7 +193,7 @@ Page({
   publishComment() {
     var that = this;
 
-    if (app.globalData.avatar == null) {
+    if (app.globalData.userInfo == null) {
       wx.navigateTo({
         url: '/pages/home/home',
       })

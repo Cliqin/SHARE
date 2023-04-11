@@ -1,0 +1,12 @@
+/* pages/mine/about/about.wxss */
+.gradient {
+  background: -webkit-linear-gradient(to bottom, #f6f5f7, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
+.bottom-share {
+  position: relative;
+  top:-120rpx;
+  left:43rpx;
+}

@@ -39,6 +39,16 @@ Page({
           url: '/pages/mine/MyProfile/myProfile',
         })
         break
+      case"about":
+      wx.navigateTo({
+        url: '/pages/mine/about/about',
+      })
+      break
+      case"feedback":
+      wx.navigateTo({
+        url: '/pages/mine/feedback/feedback',
+      })
+      break
       default:
         console.warn("unknown op case")
         return

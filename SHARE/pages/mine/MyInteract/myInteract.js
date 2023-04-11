@@ -25,9 +25,28 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+    var that =this
     const db = wx.cloud.database()
-    db.collection('share').orderBy('time', 'desc')
-    .where({
+    var collectionNames =['bisai','jiuye','kaogong','kaoyan']
+    let action=[]
+    Promise.all(collectionNames.map(name=> {
+      return db.collection(name).orderBy('time','desc').where ({
+        prizeList:{$elemMatch:{openid:app.globalData.openid}}
+      }).get()
+    })).then (results=> {
+      for(let i=0;i<results.length;i++){
+        action=action.concat(results[i].data)
+      }
+      console.log(action)
+      this.setData({
+        actionList:action
+      })
+      wx.stopPullDownRefresh()
+    })
+  
+    // db.collection('app.mould').orderBy('time', 'desc')
+    // .where({
+    //         prizeList:{$elemMatch:{openid:app.globalData.openid}}
       // prizeList:db.command.all([
       //   app.globalData.openid,
         //  options:'i',
@@ -35,20 +54,33 @@ Page({
       // prizeList:{$exists:true,$not:{$size:0,}},
 //       查询 prizeList 数组中包含 openid 字段值等于 app.globalData.openid 的元素的文档。
 // 其中 $elemMatch 表示元素匹配符，用于对数组中的元素进行筛选和匹配。
-      prizeList:{$elemMatch:{openid:app.globalData.openid}}
-    })
-    .get()
-    .then(res => {
-      console.log(res.data)
-      console.log(app.globalData.openid)
-      this.setData({
-        actionList: res.data
-      })
-      wx.stopPullDownRefresh()
-    })
-    .catch(console.error)
-  },
 
+    // })
+    // .get()
+    // .then(res => {
+    //   console.log(res.data)
+    //   console.log(app.globalData.openid)
+    //   this.setData({
+    //     actionList: res.data
+    //   })
+    //   wx.stopPullDownRefresh()
+    // })
+    // .catch(console.error)
+  },
+  viewImage(e) {
+    console.log(e)
+    wx.previewImage({
+      urls: e.currentTarget.dataset.image_list,
+      current: e.currentTarget.dataset.image_list[0]
+    })
+  },
+  todetail(event) {
+    console.log(event.currentTarget.dataset.id)
+    wx.navigateTo({
+
+      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id,
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

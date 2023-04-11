@@ -80,8 +80,7 @@ background: linear-gradient(to left, #f5f2f8, #D3CCE3); /* W3C, IE 10+/ Edge, Fi
 .bottom-share {
   position: relative;
   top:-50rpx;
-  left:45rpx;
-  
+  left:43rpx;
 }
 .nav{
   margin: auto auto;

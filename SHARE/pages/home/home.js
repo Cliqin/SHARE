@@ -163,20 +163,20 @@ Page({
     })
   },
   toGroup(event) {
-    app.mould=event.target.dataset.param
+    app.mould=event.currentTarget.dataset.param
     console.log(app.mould)
 
     wx.navigateTo({
-      url: '/pages/index/index?param='+event.target.dataset.param,
+      url: '/pages/index/index?param='+event.currentTarget.dataset.param,
     })
 
   },
   toPark(event) {
-    app.mould=event.target.dataset.param
+    app.mould=event.currentTarget.dataset.param
     console.log(app.mould)
 
     wx.navigateTo({
-      url: '/pages/index/index?param='+event.target.dataset.param,
+      url: '/pages/index/index?param='+event.currentTarget.dataset.param,
     })
   },
   toUser() {

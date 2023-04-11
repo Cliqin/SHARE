@@ -1,0 +1,16 @@
+<!--pages/mine/about/about.wxml-->
+<cu-custom bgColor="gradient" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">关于</view></cu-custom>
+<view class='margin-xl bg-white padding-xl radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'>关于SHARE经验传花小程序</view>
+  <view class='text-content'>
+    <view>Hi！~欢迎使用SHARE</view>
+    <view class='margin-top-sm'>该项目是我们团队开发的一款面向大学生的经验分享小程序。致力于为广大学子解决所遇到的诸如考研、考公、比赛、就业等常遇问题提供一个优质的经验宝库。</view>
+    <view class='margin-top-sm'>希望这里的帖子能够给你带来一些新的思考和感悟，哪怕只是一点点很小很小的帮助，也希望有更多的人愿意来这分享经验、答疑解惑，就像我们的名字“经验传花”一样，赠人玫瑰，留有余香~</view>
+    <view class='margin-top-sm'>٩(๑❛ᴗ❛๑)۶</view>
+    <view class='margin-top-sm'>更多功能敬请期待！</view>
+  </view>
+</view>
+
+<view>
+    <image class="bottom-share" src="/images/share.png" ></image>
+  </view>

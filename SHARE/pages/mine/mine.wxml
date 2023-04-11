@@ -49,11 +49,11 @@
       <text>常见问题</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view> -->
-    <view class="my-item padding-xl radius shadow-warp bg-white margin-top">
+    <view  bindtap="ToMy" data-op="feedback"class="my-item padding-xl radius shadow-warp bg-white margin-top">
       <text>我要反馈</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>
-    <view class="my-item padding-xl radius shadow-warp bg-white margin-top">
+    <view bindtap="ToMy" data-op="about" class=" my-item padding-xl radius shadow-warp bg-white margin-top">
       <text>关于我们</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>

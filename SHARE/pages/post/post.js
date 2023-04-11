@@ -161,7 +161,6 @@ Page({
     }
   },
 
-
   // 异步上传单个文件
   uploadFile: function (index, filePath) {
     //返回上传文件后的信息

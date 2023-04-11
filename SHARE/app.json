@@ -10,7 +10,9 @@
     "pages/mine/MyPost/myPost",
     "pages/mine/MyRecent/myRecent",
     "pages/mine/MyInteract/myInteract",
-    "pages/mine/MyProfile/myProfile"
+    "pages/mine/MyProfile/myProfile",
+    "pages/mine/about/about",
+    "pages/mine/feedback/feedback"
   ],
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
