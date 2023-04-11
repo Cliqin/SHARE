@@ -25,10 +25,9 @@ Page({
     var value = wx.getStorageSync('history')
 
     if (value) {
-    var collectionNames =['bisai','jiuye','kaogong','kaoyan']
+    //var collectionNames =['bisai','jiuye','kaogong','kaoyan']
     let action=[]
       var tmpList = []
-
       // for (let i = 0; i < value.length; i++) {
       //   Promise.all(collectionNames.map(name=>{
       //     return db.collection(name).doc(value[i]).get()
@@ -43,9 +42,6 @@ Page({
         //       actionList: tmpList
         //     })
         // wx.stopPullDownRefresh()
-      }
-
-
 
       for (let i = 0; i < value.length; i++) {
         const db = wx.cloud.database()
@@ -64,7 +60,8 @@ Page({
           })
           .catch(console.error)
       }
-    },
+		}
+	},
 
   /**
    * 生命周期函数--监听页面显示

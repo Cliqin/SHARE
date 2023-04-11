@@ -41,7 +41,7 @@
       <text>我的草稿</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view> -->
-    <view class="my-item padding-xl radius shadow-warp bg-white margin-top">
+    <view  bindtap="ToMy" data-op="comment" class="my-item padding-xl radius shadow-warp bg-white margin-top">
       <text>我的评论</text>
       <text class="iconfont icon-icon-test4 nav"></text>
     </view>

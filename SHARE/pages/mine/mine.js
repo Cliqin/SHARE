@@ -38,7 +38,12 @@ Page({
         wx.navigateTo({
           url: '/pages/mine/MyProfile/myProfile',
         })
-        break
+				break
+			case "comment":
+				wx.navigateTo({
+					url: '/pages/mine/Mycomment/mycomment',
+				})
+				break
       case"about":
       wx.navigateTo({
         url: '/pages/mine/about/about',

@@ -163,7 +163,6 @@ Page({
 
   },
   toPark(event) {
-
     wx.navigateTo({
       url: '/pages/index/index?param=kaoyan',
     })

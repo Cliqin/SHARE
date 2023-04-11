@@ -26,20 +26,39 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+    // const db = wx.cloud.database()
+    // db.collection('share').orderBy('time', 'desc')
+    //   .where({
+    //     _openid:app.globalData.openid
+    //   })
+    //   .get()
+    //   .then((res) => {
+    //     console.log(res)
+    //     this.setData({
+    //       actionList: res.data
+    //     })
+    //     wx.stopPullDownRefresh()
+    //   })
+    //   .catch(console.error)
+    var that =this
     const db = wx.cloud.database()
-    db.collection('share').orderBy('time', 'desc')
-      .where({
+    var collectionNames =['bisai','jiuye','kaogong','kaoyan']
+    let action=[] 
+    Promise.all(collectionNames.map(name=> {
+      return db.collection(name).orderBy('time','desc').where ({
         _openid:app.globalData.openid
+      }).get()      
+    })).then (results=> {
+      for(let i=0;i<results.length;i++){
+        action=action.concat(results[i].data)
+      }
+      console.log(action)
+      this.setData({
+        actionList:action
+
       })
-      .get()
-      .then((res) => {
-        console.log(res)
-        this.setData({
-          actionList: res.data
-        })
-        wx.stopPullDownRefresh()
-      })
-      .catch(console.error)
+      wx.stopPullDownRefresh()
+    })
   },
 
   /**
@@ -106,7 +125,13 @@ Page({
       }
     })
   },
+  todetail(event) {
+    console.log(event.currentTarget.dataset.id)
+    wx.navigateTo({
 
+      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id+'&bankuai='+event.currentTarget.dataset.param,
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

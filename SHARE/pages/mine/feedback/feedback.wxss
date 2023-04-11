@@ -1,7 +1,7 @@
 /* pages/mine/feedback/feedback.wxss */
 .indent{
   position: relative;
-  left:226rpx;
+  left:266rpx;
 }
 
 /* pages/mine/about/about.wxss */

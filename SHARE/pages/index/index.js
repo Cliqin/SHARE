@@ -22,7 +22,8 @@ Page({
     typeList: [],
     currentTypeId: 0,
     hot: 0,
-    scrollLeft: 0
+    scrollLeft: 0,
+    bankuai:''
   },
 
   selected:function(e){
@@ -45,25 +46,17 @@ Page({
   },
   onLoad: function (event) {
     console.log(event)
-    console.log(app.mould)
-    console.log('加载')
+    // console.log('event.param',event.param)
     var that = this
     setTimeout(function(){
     console.log(app.globalData.openid)
     that.setData ({
-      myOpenid:app.globalData.openid
+      myOpenid:app.globalData.openid,
+      bankuai:event.param
     })
     })
     const db = wx.cloud.database()
-    db.collection(app.mould).orderBy('time','desc').get()
-    .then((res)=>{
-    console.log(res)
-    that.setData({
-      actionList: res.data
-    })
-    wx.stopPullDownRefresh()
-})
-.catch(console.error)
+   
    // const param = options.param;
     // if (app.mould == 'kaogong') {
     //   const db = wx.cloud.database()
@@ -117,6 +110,16 @@ Page({
 
     //调用应用实例的方法获取全局数
 
+    db.collection(event.param).orderBy('time', 'desc').get()
+    .then((res) => {
+      console.log(res)
+      that.setData({
+        actionList: res.data
+      })
+      wx.stopPullDownRefresh()
+    })
+    .catch(console.error)
+
   },
   onShow:function(){
     
@@ -131,7 +134,8 @@ Page({
   },
 
   toPost(event) {
-    console.log(event)
+		console.log(event)
+		var that=this
     if (app.globalData.userInfo == null) {
 
       wx.navigateTo({
@@ -143,7 +147,7 @@ Page({
     }
     else {
       wx.navigateTo({
-        url: "/pages/post/post?param="+event.target.dataset.param,
+        url: "/pages/post/post?param="+that.data.bankuai,
       })
     }
   },
@@ -165,9 +169,11 @@ Page({
   // },
   
 todetail(event) {
+	var that =this
 console.log(event.currentTarget.dataset.id)
+console.log('bankuai',this.data.bankuai)
   wx.navigateTo({
-      url:'/pages/detail/detail?id='+ event.currentTarget.dataset.id,
+      url:'/pages/detail/detail?id='+ event.currentTarget.dataset.id+'&param='+that.data.bankuai,
     }
   )
 },
@@ -183,16 +189,16 @@ deleteAction(event){
       if (res.confirm) {
         try {
           // 调用云数据库 API 删除指定 id 的帖子
-          wx.cloud.database().collection(app.mould).doc(Id).remove({
+          wx.cloud.database().collection(that.data.bankuai).doc(Id).remove({
             success (res) {
               console.log(res);
               // 删除成功，弹出提示框
-              wx.showToast({
+             	 wx.showToast({
                 title: "删除成功",
                 icon: "none"
               });
               // 刷新页面
-              that.onLoad();
+              	that.onLoad();
             },
             fail: function(error) {
               // 删除失败，打印错误信息

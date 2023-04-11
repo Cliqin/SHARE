@@ -12,7 +12,8 @@
     "pages/mine/MyInteract/myInteract",
     "pages/mine/MyProfile/myProfile",
     "pages/mine/about/about",
-    "pages/mine/feedback/feedback"
+    "pages/mine/feedback/feedback",
+    "pages/mine/Mycomment/mycomment"
   ],
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"

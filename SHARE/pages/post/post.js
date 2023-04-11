@@ -7,10 +7,14 @@ Page({
     title: '',
     content: '',
     temp_imgList: [], //预览照片的临时地址
-    cloud_imgList: [], //保存到云存储的地址
+		cloud_imgList: [], //保存到云存储的地址
+		bankuai:''
   },
   onLoad: function (options) {
-    console.log(db.collection(app.mould))
+    this.setData({
+			bankuai:options.param,
+			openid:app.globalData.openid
+		})
     // 页面初始化 options为页面跳转所带来的参数
   },
   onReady: function () {
@@ -132,11 +136,12 @@ Page({
             }),
             //提交数据库
               
-            db.collection(app.mould).add({
+            db.collection(this.data.bankuai).add({
               data: {
                 ifImage: that.data.ifImage,
                 // nickName: nickname,
-                // faceImg: avatar,
+								// faceImg: avatar,
+								bankuai:that.data.bankuai,
                 nickName: app.globalData.userInfo.nickName,
                 faceImg: app.globalData.userInfo.avatarUrl,
                 title: that.data.title,

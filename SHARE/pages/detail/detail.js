@@ -18,19 +18,20 @@ Page({
       */
 
     onLoad: function (options) {
-    
+		
     console.log(options)
     console.log('options.this.data.bankuai', options.bankuai)
+    console.log(this.data)
     this.setData({
       openid: app.globalData.openid,
-      bankuai: options.bankuai
+      bankuai: options.param
     })
     
     this.data.id = options.id
     this.getDetail()
     console.log('this.data.bankuai', this.data.bankuai)
     var that = this
-    wx.cloud.database().collection(this.data.bankuai).doc(that.data.id).get({
+    wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).get({
       success(res) {
         //console.log(res)
         var actions = res.data
@@ -43,10 +44,7 @@ Page({
     try {
       var value = wx.getStorageSync('history')
       if (value) {
-        var List = []
-            List.push(that.data.id)
-
-
+        var List = []   
         List.push([that.data.id, this.data.bankuai])
 
         for (var i = 0; i < value.length; i++) {
@@ -76,9 +74,9 @@ Page({
   },
   getDetail() {
     var that = this
-    wx.cloud.database().collection(this.data.bankuai).doc(that.data.id).get({
+    wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).get({
       success(res) {
-        console.log(res)
+        console.log('这里有没有',res)
         var actions = res.data
         actions.time = util.formatTime(new Date(actions.time))
         for (var l in actions.commentList) {
@@ -96,6 +94,15 @@ Page({
     })
   },
   delete() {
+		if (app.globalData.userInfo == null) {
+      wx.navigateTo({
+        url: '/pages/home/home'
+      })
+      wx.showToast({
+        title: '请先登录',
+      })
+		}
+		else {
     console.log(this.data.id)
     var that = this;
     wx.showModal({
@@ -103,7 +110,7 @@ Page({
       content: '确定要删除此帖吗？',
       success(res) {
         if (res.confirm) {
-          wx.cloud.database().collection(this.data.bankuai).doc(that.data.id).remove({
+          wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).remove({
             success(res) {
               console.log(res)
               wx.navigateBack({
@@ -111,13 +118,16 @@ Page({
                   wx.showToast({
                     title: '删除成功',
                   })
+                  that.getDetail()
                 }
               })
             }
-          })
+					})
+					wx.stopPullDownRefresh()
         }
       }
-    })
+		})
+	}
   },
 
   getInputValue(event) {
@@ -140,7 +150,7 @@ Page({
     } else {
       console.log(that.data.id)
       var that = this;
-      wx.cloud.database().collection(this.data.bankuai).doc(that.data.id).get({
+      wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).get({
         success(res) {
           console.log(res)
           var action = res.data
@@ -166,7 +176,7 @@ Page({
             }
     
             console.log(action)
-            wx.cloud.database().collection(this.data.bankuai).doc(that.data.id).update({
+            wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).update({
               data: {
                 prizeList: prizeList
               },
@@ -184,7 +194,7 @@ Page({
             action.prizeList.push(user)
     
             console.log(action.prizeList)
-            wx.cloud.database().collection(this.data.bankuai).doc(that.data.id).update({
+            wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).update({
               data: {
                 prizeList: action.prizeList
               },
@@ -214,12 +224,12 @@ Page({
     } else {
       var that = this;
       console.log(that.data.id)
-      wx.cloud.database().collection(this.data.bankuai).doc(that.data.id).get({
+      wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).get({
         success(res) {
           var actions = res.data
           var comment = {}
-          comment.nickName = app.globalData.nickName
-          comment.faceImg = app.globalData.avatar
+          comment.nickName = app.globalData.userInfo.nickName
+          comment.faceImg = app.globalData.userInfo.avatarUrl
           comment.openid = app.globalData.openid
           comment.text = that.data.inputValue
           comment.time = Date.now()
@@ -227,7 +237,7 @@ Page({
           comment.toNickname = that.data.toNickname
           actions.commentList.push(comment)
           //console.log(actions)
-          wx.cloud.database().collection(this.data.bankuai).doc(that.data.id).update({
+          wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).update({
             data: {
               commentList: actions.commentList
             },
@@ -259,13 +269,13 @@ Page({
       success(res) {
         if (res.confirm) {
           var index = event.currentTarget.dataset.index
-          wx.cloud.database().collection(this.data.bankuai).doc(that.data.id).get({
+          wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).get({
             success(res) {
               console.log(res)
               var action = res.data
     
               action.commentList.splice(index, 1)
-              wx.cloud.database().collection().doc(that.data.id).update({
+              wx.cloud.database().collection(that.data.bankuai).doc(that.data.id).update({
                 data: {
                   commentList: action.commentList
                 },
