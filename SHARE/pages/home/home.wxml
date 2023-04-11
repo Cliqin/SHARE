@@ -30,23 +30,23 @@
 <view class='buttons' style='width: {{windowWidth}}px;height: {{0.5*windowHeight}}px;'>
   <view class='button-top' style='width: {{windowWidth}}px;height: {{0.25*windowHeight}}px'>
     <view class='button-top-left' bindtap='toEntrance' data-param='kaogong' style='width: {{btnSize}}px;height: {{0.8*btnSize}}px;'>
-      <image src='/images/kaogong1.png' class='index-logo' style='height:60rpx;width:60rpx;'></image>
+      <image src='/images/kaogong1.png' class='index-logo' style='height:80rpx;width:80rpx;'></image>
       <text style='font-size: 16px;'>考公</text>
     </view>
     <view class='button-top-right' style='width: {{btnSize}}px;height: {{0.8*btnSize}}px;' bindtap='toPark' data-param='kaoyan'>
-      <image src='/images/kaoyan.png' class='index-logo' style='height:70rpx;width:70rpx;'></image>
+      <image src='/images/kaoyan.png' class='index-logo' style='height:100rpx;width:100rpx;'></image>
       <text style='font-size: 16px;'>考研</text>
     </view>
   </view>
 
   <view class='button-bottom' style='width: {{windowWidth}}px;height: {{0.25*windowHeight}}px'>
     <view class='button-bottom-left' bindtap='toGroup' data-param='jiuye' style='width: {{btnSize}}px;height: {{0.8*btnSize}}px;'>
-      <image src='/images/jiuye1.png' class='index-logo' style='height:70rpx;width:70rpx;'></image>
+      <image src='/images/jiuye1.png' class='index-logo' style='height:90rpx;width:90rpx;'></image>
       <text style='font-size: 16px;'>就业</text>
     </view>
 
     <view class='button-bottom-right' bindtap='toGuest' data-param='bisai' style='width: {{btnSize}}px;height: {{0.8*btnSize}}px;'>
-      <image src='/images/bisai1.png' class='index-logo' style='height:60rpx;width:60rpx;'></image>
+      <image src='/images/bisai1.png' class='index-logo' style='height:90rpx;width:90rpx;'></image>
       <text style='font-size: 16px;'>比赛</text>
     </view>
   </view>

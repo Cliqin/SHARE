@@ -147,36 +147,25 @@ Page({
 
   },
   toEntrance(event){//考公
-    console.log(event.currentTarget.dataset.param)
-    app.mould = event.currentTarget.dataset.param
-    console.log(app.mould)
     wx.navigateTo({
-      url: '/pages/index/index?param='+app.mould,
+      url: '/pages/index/index?param=kaogong',
     })
   },
   toGuest(event) {
-    app.mould=event.target.dataset.param
-    console.log(app.mould)
-
     wx.navigateTo({
-      url: '/pages/index/index?param='+event.target.dataset.param,
+      url: '/pages/index/index?param=bisai',
     })
   },
   toGroup(event) {
-    app.mould=event.currentTarget.dataset.param
-    console.log(app.mould)
-
     wx.navigateTo({
-      url: '/pages/index/index?param='+event.currentTarget.dataset.param,
+      url: '/pages/index/index?param=jiuye',
     })
 
   },
   toPark(event) {
-    app.mould=event.currentTarget.dataset.param
-    console.log(app.mould)
 
     wx.navigateTo({
-      url: '/pages/index/index?param='+event.currentTarget.dataset.param,
+      url: '/pages/index/index?param=kaoyan',
     })
   },
   toUser() {

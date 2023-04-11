@@ -7,7 +7,7 @@ Page({
    */
   data: {
     actionList: [],
-    default_img: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+    default_img: "https://img.tukuppt.com/png_preview/00/45/71/JOGIZX506Q.jpg!/fw/780",
   },
 
   /**
@@ -15,34 +15,36 @@ Page({
    */
   onLoad(options) {
 
-
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    
+
     var value = wx.getStorageSync('history')
 
     if (value) {
       var tmpList = []
       for (let i = 0; i < value.length; i++) {
         const db = wx.cloud.database()
-        db.collection('share')
-          .doc(value[i])
+        db.collection(value[i][1])
+          .doc(value[i][0])
           .get()
           .then((res) => {
             tmpList[i] = res.data
+            tmpList[i]['bankuai'] = value[i][1]
             wx.stopPullDownRefresh()
             this.setData({
               actionList: tmpList
             })
+            console.log(this.data.actionList)
             wx.stopPullDownRefresh()
           })
           .catch(console.error)
       }
     }
+
 
   },
 
@@ -60,10 +62,9 @@ Page({
     })
   },
   todetail(event) {
-    console.log(event.currentTarget.dataset.id)
+    console.log(event)
     wx.navigateTo({
-
-      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id,
+      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id + '&bankuai=' + event.currentTarget.dataset.bankuai,
     })
   },
   deleteAction(event) {
