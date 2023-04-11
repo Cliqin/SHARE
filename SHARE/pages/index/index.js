@@ -53,7 +53,9 @@ Page({
   onShow: function () {
     console.log("onShow")
     const db = wx.cloud.database()
-    db.collection(this.data.bankuai).orderBy('time', 'desc').get()
+    db.collection(this.data.bankuai)
+      .orderBy('time', 'desc')
+      .get()
       .then((res) => {
         console.log(res)
         this.setData({
@@ -62,6 +64,7 @@ Page({
         wx.stopPullDownRefresh()
       })
       .catch(console.error)
+    
   },
   //查看图片
   viewImage(e) {

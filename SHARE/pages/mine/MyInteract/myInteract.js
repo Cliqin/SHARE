@@ -79,7 +79,7 @@ Page({
     console.log(event.currentTarget.dataset.id)   
     wx.navigateTo({
 
-      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id+'&bankuai='+event.currentTarget.dataset.param,
+      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id+'&param='+event.currentTarget.dataset.param,
     })
   },
 

@@ -8,7 +8,7 @@ Page({
    */
   data: {
     actionList: [],
-    default_img: "https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg",
+    default_img: "https://img.tukuppt.com/png_preview/00/45/71/JOGIZX506Q.jpg!/fw/780",
   },
 
   /**
@@ -36,8 +36,6 @@ Page({
       }).get()
     })).then(results => {
       for (let i = 0; i < results.length; i++) {
-        var tmpArray = results[i].data
-        
         action = action.concat(results[i].data)
       }
       console.log(action)
@@ -115,7 +113,7 @@ Page({
     console.log(event.currentTarget.dataset.id)
     wx.navigateTo({
 
-      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id + '&bankuai=' + event.currentTarget.dataset.param,
+      url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id + '&param=' + event.currentTarget.dataset.param,
     })
   },
   /**
