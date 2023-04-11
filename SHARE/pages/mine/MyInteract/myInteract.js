@@ -28,11 +28,11 @@ Page({
     var that =this
     const db = wx.cloud.database()
     var collectionNames =['bisai','jiuye','kaogong','kaoyan']
-    let action=[]
+    let action=[] 
     Promise.all(collectionNames.map(name=> {
       return db.collection(name).orderBy('time','desc').where ({
         prizeList:{$elemMatch:{openid:app.globalData.openid}}
-      }).get()
+      }).get()      
     })).then (results=> {
       for(let i=0;i<results.length;i++){
         action=action.concat(results[i].data)
@@ -79,6 +79,29 @@ Page({
     wx.navigateTo({
 
       url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id,
+    })
+  },
+
+  deleteAction(event) {
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除此帖吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.cloud.database().collection('share')
+          .doc(event.currentTarget.dataset.id)
+          .remove({
+            success(res) {  
+              console.log(res)
+              wx.showToast({
+                title: '删除成功！',
+              })
+              that.onLoad()
+            }
+          })
+        }
+      }
     })
   },
   /**

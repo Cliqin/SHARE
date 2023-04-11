@@ -1,3 +1,9 @@
 .margin-left{
   margin-left: 70rpx;
 }
+
+.bottom-share {
+  position: relative;
+  top:-100rpx;
+  left:43rpx;
+}

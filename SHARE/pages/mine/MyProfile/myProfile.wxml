@@ -40,4 +40,7 @@
     <button data-op="{{temp_imgList[0]}}" bindtap="save" role="button" aria-disabled="false" class="cu-btn round bg-cyan">保存</button>
   </view>
 
+  <view>
+    <image class="bottom-share" src="/images/share.png" ></image>
+  </view>
 </scroll-view>
